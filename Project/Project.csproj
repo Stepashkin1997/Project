@@ -179,7 +179,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Update\Index.cshtml" />
     <Content Include="Views\Output\Index.cshtml" />
-    <Content Include="Views\Output\Tabels.cshtml" />
+    <Content Include="Views\Output\Employees.cshtml" />
+    <Content Include="Views\Output\Projects.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

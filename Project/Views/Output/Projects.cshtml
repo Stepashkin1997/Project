@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "Projects";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="text-align:center; line-height: 20px;">
+    <div style="display:inline-block; vertical-align:text-top;">
+        <table>
+            <caption>
+            <h2>Projects</h2>
+            </caption>
+            <tr>
+                <th>№</th>
+                <th>Name</th>
+                <th>Customer</th>
+                <th>Executor</th>
+                <th>Manager</th>
+                <th>Date start</th>
+                <th>Date end</th>
+                <th>Info Executor</th>
+                <th>Priority</th>
+            </tr>
+            @{
+                foreach (var item in ViewBag.Projects)
+                {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Customer</td>
+                <td>@item.Executor</td>
+                <td>@item.Manager</td>
+                <td>@item.Date_start</td>
+                <td>@item.Date_end</td>
+                <td>@item.Info_Executor</td>
+                <td>@item.Priority</td>
+            </tr>
+                }
+            }
+        </table>
+    </div>
+    <div style="display:inline-block; margin:0;  vertical-align: text-top;">
+        <h3>Фильтр</h3>
+        @*<form action="" method="post" style="width:200px; margin: 0 auto;">
+            <ul>
+                <h3>По отделам</h3>
+                <li>
+                    <select name="otdel" id="otdel" class="select">
+                        @{
+                            <option value="All">-none-</option>
+                            foreach (var item in ViewBag.Otdels)
+                            {
+                                <option value="@item.name">@item.name</option>
+                            }
+                        }
+                    </select>
+                </li>
+                <h3>По продуктам</h3>
+                <li>
+                    <select name="product" id="product" class="select">
+                        @{
+                            <option value="All">-none-</option>
+                            foreach (var item in ViewBag.Goods)
+                            {
+                                <option value="@item.name">@item.name</option>
+                            }
+                        }
+                    </select>
+                </li>
+                <h3>По персоналу</h3>
+                <li>
+                    <select name="employee" id="employee" class="select">
+                        <option value="All">-none-</option>
+                        @foreach (var item in ViewBag.Employees)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
+                </li>
+                <h3>По дате</h3>
+                <li>
+                    <ul>
+                        <h5>От</h5>
+                        <li class="select">
+                            <input type="date" name="start" value="2010-01-01"
+                                   max="2050-01-01" min="2010-01-01" class="select" />
+                        </li>
+                        <h5>До</h5>
+                        <li class="select">
+                            <input type="date" name="end" value="2050-01-01"
+                                   max="2050-01-01" min="2010-01-01" class="select" />
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <input type="submit" value="Отфильтровать" class="select" />
+        </form>*@
+    </div>
+</div>
+

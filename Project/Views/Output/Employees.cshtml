@@ -1,0 +1,32 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="text-align:center; line-height: 20px;">
+    <div style="display:inline-block; vertical-align:text-top;">
+        <table>
+            <caption>
+                <h2>Employees</h2>
+            </caption>
+            <tr>
+                <th>№</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Middle name</th>
+                <th>e-mail</th>
+            </tr>
+            @{
+                foreach (var item in ViewBag.Employees)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Surname</td>
+                        <td>@item.Middle_name</td>
+                        <td>@item.email</td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</div>
