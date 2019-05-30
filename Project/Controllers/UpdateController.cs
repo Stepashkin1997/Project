@@ -1,11 +1,10 @@
-﻿using Project.Models;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace Project.Controllers
 {
-    public class HomeController : Controller
+    public class UpdateController : Controller
     {
-        private DataContext context;
+        // GET: Update
         public ActionResult Index()
         {
             return View();
