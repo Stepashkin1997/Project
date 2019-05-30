@@ -1,28 +1,92 @@
-﻿
-@{
-    ViewBag.Title = "Index";
+﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<ul style="margin-left:auto; margin-right:auto; width:700px; text-align:center;">
-
-    <li class="list">
-        <a href="/Issue/Index">
-        <div class="block">
-            <img src="~/Content/img/svedenia.png" class="img"/>
-            <div>Выдача сведений</div>
-         </div>
-        </a>
-    </li>
-    <li class="list">
-        <a href="/Update/Index">
-            <div class="block">
-                <img src="~/Content/img/update.png" class="img" />
-                <div>
-                    <span>Cредства обновления данных</span>
-                </div>
-            </div>
-        </a>
-    </li>
-</ul>
+@section Scripts
+{
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/Script.js"></script>
+}
+<div style="text-align:center; line-height: 20px;">
+    <div style="display:inline-block; vertical-align:text-top;">
+        <table>
+            <caption><h2>Таблица покупок</h2></caption>
+            <tr>
+                <th>№</th>
+                <th>Product</th>
+                <th>Data sale</th>
+                <th>Coast</th>
+                <th>Employee</th>
+            </tr>
+            @{
+                foreach (var item in ViewBag.Purchases)
+                {
+                    <tr>
+                        <td>@item.id</td>
+                        <td>@item.product.name</td>
+                        <td>@item.data_sale.ToShortDateString()</td>
+                        <td>@item.product.coast</td>
+                        <td>@item.employee.name @item.employee.surname</td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+    <div style="display:inline-block; margin:0;  vertical-align: text-top;">
+        <h3>Фильтр</h3>
+        <form action="/Issue/Purchases/" method="post" style="width:200px; margin: 0 auto;">
+            <ul>
+                <h3>По отделам</h3>
+                <li>
+                    <select name="otdel" id="otdel" class="select">
+                        @{
+                            <option value="All">-none-</option>
+                            foreach (var item in ViewBag.Otdels)
+                            {
+                                <option value="@item.name">@item.name</option>
+                            }
+                        }
+                    </select>
+                </li>
+                <h3>По продуктам</h3>
+                <li>
+                    <select name="product" id="product" class="select">
+                        @{
+                            <option value="All">-none-</option>
+                            foreach (var item in ViewBag.Goods)
+                            {
+                                <option value="@item.name">@item.name</option>
+                            }
+                        }
+                    </select>
+                </li>
+                <h3>По персоналу</h3>
+                <li>
+                    <select name="employee" id="employee" class="select">
+                        <option value="All">-none-</option>
+                        @foreach (var item in ViewBag.Employees)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
+                </li>
+                <h3>По дате</h3>
+                <li>
+                    <ul>
+                        <h5>От</h5>
+                        <li class="select">
+                            <input type="date" name="start" value="2010-01-01"
+                                   max="2050-01-01" min="2010-01-01" class="select" />
+                        </li>
+                        <h5>До</h5>
+                        <li class="select">
+                            <input type="date" name="end" value="2050-01-01"
+                                   max="2050-01-01" min="2010-01-01" class="select" />
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <input type="submit" value="Отфильтровать" class="select" />
+        </form>
+    </div>
+</div>
 

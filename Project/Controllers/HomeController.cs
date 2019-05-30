@@ -1,6 +1,5 @@
 ﻿using Project.Models;
 using System.Web.Mvc;
-
 namespace Project.Controllers
 {
     public class HomeController : Controller
