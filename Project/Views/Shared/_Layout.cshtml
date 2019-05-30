@@ -2,12 +2,22 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/Style.css" rel="stylesheet">
+    @RenderSection("Scripts", false)
+    <title>Market</title>
 </head>
 <body>
-
+    <a href="/Home/Index" style="position:absolute; top:5px; right:5px;">
+        <img src="~/Content/img/home.png" title="На начальную страницу" />
+    </a>
+    @*@{
+        if (ViewBag.Back != null)
+        {
+            <a href="@ViewBag.Back" style="position:absolute; top:5px; left:5px;">
+                <img src="~/Content/img/back.png" title="Назад" />
+            </a>
+        }
+    }*@
+    @RenderBody()
 </body>
 </html>
