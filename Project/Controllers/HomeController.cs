@@ -5,7 +5,7 @@ namespace Project.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return View("Index");
         }
     }
 }

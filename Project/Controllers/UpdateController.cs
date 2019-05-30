@@ -10,11 +10,6 @@ namespace Project.Controllers
         // GET: Update
         public ActionResult Index()
         {
-            using (context = new DataContext())
-            {
-                var a = context.Employee.ToList();
-            }
-
             return View();
         }
     }

@@ -4,7 +4,7 @@ using System.Web.Mvc;
 
 namespace Project.Controllers
 {
-    public class OutputController : Controller
+    public class OutputController : Controller//контроллер выдачи данных
     {
         private DataContext context;
         // GET: Output
@@ -13,18 +13,18 @@ namespace Project.Controllers
             return View();
         }
 
-        public ActionResult Employees()
+        public ActionResult Employees()//метод возвращающий предсталение с сотрудниками
         {
-            using (context = new DataContext())
+            using (DataContext context = new DataContext())
             {
                 ViewBag.Employees = context.Employee.ToList();
             }
             return View();
         }
 
-        public ActionResult Projects()
+        public ActionResult Projects()//метод возвращающий предсталение с проектами
         {
-            using (context = new DataContext())
+            using (DataContext context = new DataContext())
             {
                 ViewBag.Projects = context.Project.ToList();
             }

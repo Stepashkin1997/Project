@@ -8,10 +8,23 @@ namespace Project.Tests.Controllers
     public class HomeControllerTest
     {
         [TestMethod]
-        public void Index()
+        public void IndexViewResultNotNull()
         {
-            // Arrange
-          
+            HomeController controller = new HomeController();
+
+            ViewResult result = controller.Index() as ViewResult;
+
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void IndexViewEqualIndexCshtml()
+        {
+            HomeController controller = new HomeController();
+
+            ViewResult result = controller.Index() as ViewResult;
+            var a = result.ViewName;
+            Assert.AreEqual("Index", result.ViewName);
         }
     }
 }
