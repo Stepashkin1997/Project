@@ -19,7 +19,7 @@ namespace Project.Controllers
             {
                 ViewBag.Employees = context.Employee.ToList();
             }
-            return View();
+            return View("Employees");
         }
 
         public ActionResult Projects()//метод возвращающий предсталение с проектами
@@ -28,7 +28,7 @@ namespace Project.Controllers
             {
                 ViewBag.Projects = context.Project.ToList();
             }
-            return View();
+            return View("Projects");
         }
     }
 }

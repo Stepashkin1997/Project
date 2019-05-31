@@ -37,5 +37,25 @@ namespace Project.Tests.Controllers
 
             Assert.IsNotNull(result);
         }
+
+        [TestMethod]
+        public void ResultViewBagEmployees()
+        {
+            OutputController controller = new OutputController();
+
+            ViewResult result = controller.Employees() as ViewResult;
+
+            Assert.IsNotNull(result.ViewBag.Employees);
+        }
+
+        [TestMethod]
+        public void ResultViewBagProjects()
+        {
+            OutputController controller = new OutputController();
+
+            ViewResult result = controller.Projects() as ViewResult;
+
+            Assert.IsNotNull(result.ViewBag.Projects);
+        }
     }
 }
