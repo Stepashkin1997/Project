@@ -15,7 +15,7 @@ namespace Project.Controllers
 
         public ActionResult Employees()//метод возвращающий предсталение с сотрудниками
         {
-            using (DataContext context = new DataContext())
+            using (context = new DataContext())
             {
                 ViewBag.Employees = context.Employee.ToList();
             }
@@ -24,7 +24,7 @@ namespace Project.Controllers
 
         public ActionResult Projects()//метод возвращающий предсталение с проектами
         {
-            using (DataContext context = new DataContext())
+            using (context = new DataContext())
             {
                 ViewBag.Projects = context.Project.ToList();
             }

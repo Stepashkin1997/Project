@@ -17,5 +17,15 @@ namespace Project.Tests.Controllers
 
             Assert.IsNotNull(result);
         }
+
+        [TestMethod]
+        public void ResultViewBagList()
+        {
+            UpdateController controller = new UpdateController();
+
+            ViewResult result = controller.Index() as ViewResult;
+
+            Assert.IsNotNull(result.ViewBag.List);
+        }
     }
 }

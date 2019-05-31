@@ -1,4 +1,5 @@
 ﻿using Project.Models;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -10,7 +11,30 @@ namespace Project.Controllers
         // GET: Update
         public ActionResult Index()
         {
+            ViewBag.List = new List<string>() { "Employees", "Projects", "Projects_Employees" };//список таблиц
             return View();
+        }
+
+        [HttpPost]
+        public JsonResult Select(string table)
+        {
+            using (context = new DataContext())
+            {
+                switch (table)
+                {
+                    case "Projects":
+                        var otdel = context.Project.ToList();
+                        return Json(otdel);
+                    case "Projects_Employees":
+                        var product = context.Project_Employee.ToList();
+                        return Json(product);
+                    case "Employees":
+                        var employee = context.Employee.ToList();
+                        return Json(employee);
+                    default:
+                        return Json("");
+                }
+            }
         }
     }
 }
