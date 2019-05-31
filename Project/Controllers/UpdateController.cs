@@ -5,22 +5,22 @@ using System.Web.Mvc;
 
 namespace Project.Controllers
 {
-    public class UpdateController : Controller
+    public class UpdateController : Controller//контроллер для изменения БД
     {
         private DataContext context;
         // GET: Update
         public ActionResult Index()
         {
-            ViewBag.List = new List<string>() { "Employees", "Projects", "Projects_Employees" };//список таблиц
+            ViewBag.List = new List<string>() { "Employees", "Projects", "Projects_Employees" };//список имен таблиц
             return View();
         }
 
         [HttpPost]
-        public JsonResult Select(string table)
+        public JsonResult Select(string table)//post метод возвращающий таблицы в JSON
         {
             using (context = new DataContext())
             {
-                switch (table)
+                switch (table)//выбор таблицы по запросу
                 {
                     case "Projects":
                         var otdel = context.Project.ToList();
@@ -32,7 +32,7 @@ namespace Project.Controllers
                         var employee = context.Employee.ToList();
                         return Json(employee);
                     default:
-                        return Json("");
+                        return null;
                 }
             }
         }
