@@ -6,10 +6,10 @@ using Project.Controllers;
 namespace Project.Tests.Controllers
 {
     [TestClass]
-    public class OutputControllerTest
+    public class OutputControllerTest//тест-методы контроллера OutputController
     {
         [TestMethod]
-        public void IndexViewResultNotNull()
+        public void IndexViewResultNotNull()//проверка результата метода Index на пустоту
         {
             OutputController controller = new OutputController();
 
@@ -19,7 +19,7 @@ namespace Project.Tests.Controllers
         }
 
         [TestMethod]
-        public void EmployeesViewResultNotNull()
+        public void EmployeesViewResultNotNull()//проверка результата метода Employees на пустоту
         {
             OutputController controller = new OutputController();
 
@@ -29,7 +29,7 @@ namespace Project.Tests.Controllers
         }
 
         [TestMethod]
-        public void ProjectsViewResultNotNull()
+        public void ProjectsViewResultNotNull()//проверка результата метода Projects на пустоту
         {
             OutputController controller = new OutputController();
 
@@ -39,7 +39,7 @@ namespace Project.Tests.Controllers
         }
 
         [TestMethod]
-        public void ResultViewBagEmployees()
+        public void ResultViewBagEmployeesNotNull()//проверка Employees контейнера ViewBag метода Employees на пустоту
         {
             OutputController controller = new OutputController();
 
@@ -49,7 +49,7 @@ namespace Project.Tests.Controllers
         }
 
         [TestMethod]
-        public void ResultViewBagProjects()
+        public void ResultViewBagProjectsNotNull()//проверка Projects контейнера ViewBag метода Projects на пустоту
         {
             OutputController controller = new OutputController();
 
