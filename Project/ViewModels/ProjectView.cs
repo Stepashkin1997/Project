@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Project.ViewModels
+﻿namespace Project.ViewModels
 {
     public class ProjectView//класс для отображения сущности Project 
     {

@@ -7,7 +7,7 @@
     <div style="display:inline-block; vertical-align:text-top;">
         <table>
             <caption>
-            <h2>Projects</h2>
+                <h2>Projects</h2>
             </caption>
             <tr>
                 <th>№</th>
@@ -19,81 +19,107 @@
                 <th>Date end</th>
                 <th>Info Executor</th>
                 <th>Priority</th>
+                <th>Show information about employees</th>
             </tr>
             @{
                 foreach (var item in ViewBag.Projects)
                 {
-            <tr>
-                <td>@item.Id</td>
-                <td>@item.Name</td>
-                <td>@item.Customer</td>
-                <td>@item.Executor</td>
-                <td>@item.Manager</td>
-                <td>@item.Date_start</td>
-                <td>@item.Date_end</td>
-                <td>@item.Info_Executor</td>
-                <td>@item.Priority</td>
-            </tr>
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Customer</td>
+                        <td>@item.Executor</td>
+                        <td>@item.Manager</td>
+                        <td>@item.Date_start</td>
+                        <td>@item.Date_end</td>
+                        <td>@item.Info_Executor</td>
+                        <td>@item.Priority</td>
+                        <td>
+                            <a href="/Output/EmployeesinProjects/@item.Id">
+                                <button>Show</button>
+                            </a>
+                        </td>
+                    </tr>
                 }
             }
         </table>
     </div>
     <div style="display:inline-block; margin:0;  vertical-align: text-top;">
-        <h3>Фильтр</h3>
-        @*<form action="" method="post" style="width:200px; margin: 0 auto;">
+        <h3>Filter</h3>
+        <form action="/Output/Filters" method="post" style="width:200px; margin: 0 auto;">
             <ul>
-                <h3>По отделам</h3>
+                <h3>By name</h3>
                 <li>
-                    <select name="otdel" id="otdel" class="select">
+                    <select name="name" id="name" class="select">
                         @{
                             <option value="All">-none-</option>
-                            foreach (var item in ViewBag.Otdels)
+                            foreach (var item in ViewBag.Names)
                             {
-                                <option value="@item.name">@item.name</option>
+                                <option value="@item">@item</option>
                             }
                         }
                     </select>
                 </li>
-                <h3>По продуктам</h3>
+                <h3>By customer</h3>
                 <li>
-                    <select name="product" id="product" class="select">
+                    <select name="customer" id="customer" class="select">
                         @{
                             <option value="All">-none-</option>
-                            foreach (var item in ViewBag.Goods)
+                            foreach (var item in ViewBag.Customers)
                             {
-                                <option value="@item.name">@item.name</option>
+                                <option value="@item">@item</option>
                             }
                         }
                     </select>
                 </li>
-                <h3>По персоналу</h3>
+                <h3>By executor</h3>
                 <li>
-                    <select name="employee" id="employee" class="select">
+                    <select name="executor" id="executor" class="select">
                         <option value="All">-none-</option>
-                        @foreach (var item in ViewBag.Employees)
+                        @foreach (var item in ViewBag.Executors)
                         {
                             <option value="@item">@item</option>
                         }
                     </select>
                 </li>
-                <h3>По дате</h3>
+                <h3>By manager</h3>
+                <li>
+                    <select name="manager" id="manager" class="select">
+                        <option value="All">-none-</option>
+                        @foreach (var item in ViewBag.Managers)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
+                </li>
+                <h3>By date</h3>
                 <li>
                     <ul>
-                        <h5>От</h5>
+                        <h5>From</h5>
                         <li class="select">
                             <input type="date" name="start" value="2010-01-01"
                                    max="2050-01-01" min="2010-01-01" class="select" />
                         </li>
-                        <h5>До</h5>
+                        <h5>To</h5>
                         <li class="select">
                             <input type="date" name="end" value="2050-01-01"
                                    max="2050-01-01" min="2010-01-01" class="select" />
                         </li>
                     </ul>
                 </li>
+                <h3>By priority</h3>
+                <li>
+                    <select name="priority" id="priority" class="select">
+                        <option value="-1">-none-</option>
+                        @foreach (var item in ViewBag.Priorities)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
+                </li>
             </ul>
-            <input type="submit" value="Отфильтровать" class="select" />
-        </form>*@
+            <input type="submit" value="Filter out" class="select" />
+        </form>
     </div>
 </div>
 

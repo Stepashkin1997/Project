@@ -149,15 +149,16 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\Employees.cs" />
+    <Compile Include="Models\Filter.cs" />
     <Compile Include="Models\Projects.cs" />
     <Compile Include="Models\Projects_Employees.cs" />
     <Compile Include="Models\StringExtensions.cs" />
     <Compile Include="Models\Task.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Projects_EmployeesView.cs" />
     <Compile Include="ViewModels\ProjectView.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\img\back.png" />
     <Content Include="Content\img\emloye.png" />
     <Content Include="Content\img\home.png" />
     <Content Include="Content\img\minus.png" />
@@ -195,6 +196,7 @@
     <Content Include="Views\Output\Index.cshtml" />
     <Content Include="Views\Output\Employees.cshtml" />
     <Content Include="Views\Output\Projects.cshtml" />
+    <Content Include="Views\Output\EmployeesinProjects.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
