@@ -1,6 +1,7 @@
 ﻿using Project.Models;
 using Project.ViewModels;
 using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using Filter = Project.Models.Filter;
@@ -17,11 +18,11 @@ namespace Project.Controllers
             return View();
         }
 
-        public ActionResult Tasks()//метод возвращающий предсталение с сотрудниками
+        public ActionResult Tasks()//метод возвращающий предсталение с задачами
         {
             using (context = new DataContext())
             {
-                ViewBag.Task = context.Tasks;
+                ViewBag.Task = context.Tasks.ToList();
             }
             return View("Tasks");
         }

@@ -10,5 +10,9 @@ namespace Project.Models
         public string Middle_name { get; set; }//Отчество
         public string email { get; set; }//Почта
         public ICollection<Task> Task { get; set; }
+        public Employees()//ленивая загрузка
+        {
+            Task = new HashSet<Task>();
+        }
     }
 }

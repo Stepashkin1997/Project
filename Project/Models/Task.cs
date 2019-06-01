@@ -28,9 +28,9 @@ namespace Project.Models
         public int Priority { get; set; }//приоритет задачи
 
         public int AuthorId { get; set; }//автор задачи
-        public Employees Author { get; set; }
+        public virtual Employees Author { get; set; }
 
         public int? ExecutorId { get; set; }//исполнитель задачи
-        public Employees Executor { get; set; }
+        public virtual Employees Executor { get; set; }
     }
 }
