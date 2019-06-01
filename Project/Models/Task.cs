@@ -31,6 +31,6 @@ namespace Project.Models
         public Employees Author { get; set; }
 
         public int? ExecutorId { get; set; }//исполнитель задачи
-        public virtual Employees Executor { get; set; }
+        public Employees Executor { get; set; }
     }
 }

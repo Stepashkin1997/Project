@@ -138,13 +138,9 @@
     <Compile Include="Migrations\201906011105058_Init.Designer.cs">
       <DependentUpon>201906011105058_Init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906011112182_Add_Task.cs" />
-    <Compile Include="Migrations\201906011112182_Add_Task.Designer.cs">
-      <DependentUpon>201906011112182_Add_Task.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906011119447_Add_Task-v2.cs" />
-    <Compile Include="Migrations\201906011119447_Add_Task-v2.Designer.cs">
-      <DependentUpon>201906011119447_Add_Task-v2.cs</DependentUpon>
+    <Compile Include="Migrations\201906011607017_Add_Task.cs" />
+    <Compile Include="Migrations\201906011607017_Add_Task.Designer.cs">
+      <DependentUpon>201906011607017_Add_Task.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DataContext.cs" />
@@ -197,6 +193,7 @@
     <Content Include="Views\Output\Employees.cshtml" />
     <Content Include="Views\Output\Projects.cshtml" />
     <Content Include="Views\Output\EmployeesinProjects.cshtml" />
+    <Content Include="Views\Output\Tasks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -210,11 +207,8 @@
     <EmbeddedResource Include="Migrations\201906011105058_Init.resx">
       <DependentUpon>201906011105058_Init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906011112182_Add_Task.resx">
-      <DependentUpon>201906011112182_Add_Task.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906011119447_Add_Task-v2.resx">
-      <DependentUpon>201906011119447_Add_Task-v2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906011607017_Add_Task.resx">
+      <DependentUpon>201906011607017_Add_Task.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

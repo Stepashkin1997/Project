@@ -1,24 +1,22 @@
 ﻿
 @{
+    ViewBag.Title = "Tasks";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <div style="text-align:center; line-height: 20px;">
     <div style="display:inline-block; vertical-align:text-top;">
         <table>
             <caption>
-                <h2>Projects</h2>
+                <h2>Tasks</h2>
             </caption>
             <tr>
                 <th>№</th>
-                <th>Name</th>
-                <th>Customer</th>
+                <th>Author</th>
                 <th>Executor</th>
-                <th>Manager</th>
-                <th>Date start</th>
-                <th>Date end</th>
-                <th>Info Executor</th>
+                <th>Status</th>
+                <th>Comment</th>
                 <th>Priority</th>
-                <th>Show information about employees</th>
             </tr>
             @{
                 foreach (var item in ViewBag.Projects)
@@ -30,9 +28,6 @@
                         <td>@item.Executor</td>
                         <td>@item.Manager</td>
                         <td>@item.Date_start</td>
-                        <td>@item.Date_end</td>
-                        <td>@item.Info_Executor</td>
-                        <td>@item.Priority</td>
                         <td>
                             <a href="/Output/EmployeesinProjects/@item.Id">
                                 <button class="select">Show</button>
@@ -45,7 +40,7 @@
     </div>
     <div style="display:inline-block; margin:0;  vertical-align: text-top;">
         <h3>Filter</h3>
-        <form action="/Output/Filters" method="post" style="width:200px; margin: 0 auto;">
+        @*<form action="/Output/Filters" method="post" style="width:200px; margin: 0 auto;">
             <ul>
                 <h3>By name</h3>
                 <li>
@@ -118,7 +113,7 @@
                 </li>
             </ul>
             <input type="submit" value="Filter out" class="select" />
-        </form>
+        </form>*@
     </div>
 </div>
 

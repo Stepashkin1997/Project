@@ -13,7 +13,7 @@ namespace Project.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201906011112182_Add_Task"; }
+            get { return "201906011607017_Add_Task"; }
         }
         
         string IMigrationMetadata.Source

@@ -57,5 +57,15 @@ namespace Project.Tests.Controllers
 
             Assert.IsNotNull(result.ViewBag.Projects);
         }
+
+        [TestMethod]
+        public void EmployeesinProjectsViewResultNotNull()//проверка результата метода EmployeesinProjects на пустоту
+        {
+            OutputController controller = new OutputController();
+
+            ViewResult result = controller.EmployeesinProjects(1) as ViewResult;
+
+            Assert.IsNotNull(result);
+        }
     }
 }
