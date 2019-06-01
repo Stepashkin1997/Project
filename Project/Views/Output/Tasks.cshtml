@@ -18,6 +18,7 @@
                 <th>Status</th>
                 <th>Comment</th>
                 <th>Priority</th>
+                <th>Project</th>
             </tr>
             @{
                 foreach (var item in ViewBag.Task)
@@ -30,6 +31,7 @@
                         <td>@item.Status</td>
                         <td>@item.Comment</td>
                         <td>@item.Priority</td>
+                        <td>@item.Project</td>
                     </tr>
                 }
             }
@@ -38,64 +40,74 @@
     <div style="display:inline-block; margin:0;  vertical-align: text-top;">
         <h3>Filter</h3>
         <form action="/Output/FiltersTask" method="post" style="width:200px; margin: 0 auto;">
-                <ul>
-                    <h3>By name</h3>
-                    <li>
-                        <select name="name" id="name" class="select">
-                            @{
-                                <option value="All">-none-</option>
-                                foreach (var item in ViewBag.Names)
-                                {
-                                    <option value="@item">@item</option>
-                                }
-                            }
-                        </select>
-                    </li>
-                    <h3>By author</h3>
-                    <li>
-                        <select name="author" id="author" class="select">
-                            @{
-                                <option value="All">-none-</option>
-                                foreach (var item in ViewBag.Authors)
-                                {
-                                    <option value="@item">@item</option>
-                                }
-                            }
-                        </select>
-                    </li>
-                    <h3>By executor</h3>
-                    <li>
-                        <select name="executor" id="executor" class="select">
+            <ul>
+                <h3>By name</h3>
+                <li>
+                    <select name="name" id="name" class="select">
+                        @{
                             <option value="All">-none-</option>
-                            @foreach (var item in ViewBag.Executors)
+                            foreach (var item in ViewBag.Names)
                             {
                                 <option value="@item">@item</option>
                             }
-                        </select>
-                    </li>
-                    <h3>By status</h3>
-                    <li>
-                        <select name="status" id="status" class="select">
+                        }
+                    </select>
+                </li>
+                <h3>By author</h3>
+                <li>
+                    <select name="author" id="author" class="select">
+                        @{
                             <option value="All">-none-</option>
-                            @foreach (var item in ViewBag.Status)
+                            foreach (var item in ViewBag.Authors)
                             {
                                 <option value="@item">@item</option>
                             }
-                        </select>
-                    </li>
-                    <h3>By priority</h3>
-                    <li>
-                        <select name="priority" id="priority" class="select">
-                            <option value="-1">-none-</option>
-                            @foreach (var item in ViewBag.Priorities)
-                            {
-                                <option value="@item">@item</option>
-                            }
-                        </select>
-                    </li>
-                </ul>
-                <input type="submit" value="Filter out" class="select" />
-            </form>
+                        }
+                    </select>
+                </li>
+                <h3>By executor</h3>
+                <li>
+                    <select name="executor" id="executor" class="select">
+                        <option value="All">-none-</option>
+                        @foreach (var item in ViewBag.Executors)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
+                </li>
+                <h3>By status</h3>
+                <li>
+                    <select name="status" id="status" class="select">
+                        <option value="All">-none-</option>
+                        @foreach (var item in ViewBag.Status)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
+                </li>
+                <h3>By priority</h3>
+                <li>
+                    <select name="priority" id="priority" class="select">
+                        <option value="-1">-none-</option>
+                        @foreach (var item in ViewBag.Priorities)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
+                </li>
+                <h3>By project</h3>
+                <li>
+                    <select name="project" id="project" class="select">
+                        <option value="-1">-none-</option>
+                        @foreach (var item in ViewBag.Project)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
+                </li>
+            </ul>
+            <input type="submit" value="Filter out" class="select" />
+        </form>
     </div>
 </div>
 

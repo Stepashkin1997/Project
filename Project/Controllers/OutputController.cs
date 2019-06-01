@@ -29,6 +29,7 @@ namespace Project.Controllers
             ViewBag.Executors = result.Select(a => a.Executor.Name).Distinct().ToList();
             ViewBag.Status = result.Select(a => a.Status).Distinct().ToList();
             ViewBag.Priorities = result.Select(a => a.Priority).Distinct().ToList();
+            ViewBag.Project = result.Select(a => a.Project).Distinct().ToList();
             return View("Tasks");
         }
 
@@ -45,6 +46,7 @@ namespace Project.Controllers
                 ViewBag.Executors = result.Select(a => a.Executor.Name).Distinct().ToList();
                 ViewBag.Status = result.Select(a => a.Status).Distinct().ToList();
                 ViewBag.Priorities = result.Select(a => a.Priority).Distinct().ToList();
+                ViewBag.Project = result.Select(a => a.Project).Distinct().ToList();
 
 
                 //Фильтрация результата через набор условий
@@ -62,6 +64,8 @@ namespace Project.Controllers
 
                 if (filter.priority != -1)//задано ли условие с приоритетом
                     result = result.Where(a => a.Priority == filter.priority).ToList();
+                if (filter.project != -1)//задано ли условие с приоритетом
+                    result = result.Where(a => a.Project == filter.project).ToList();
 
                 //передача результата в представление
                 ViewBag.Task = result;

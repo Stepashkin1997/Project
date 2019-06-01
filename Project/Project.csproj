@@ -142,6 +142,10 @@
     <Compile Include="Migrations\201906011607017_Add_Task.Designer.cs">
       <DependentUpon>201906011607017_Add_Task.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906011741153_Add_Task-v2.cs" />
+    <Compile Include="Migrations\201906011741153_Add_Task-v2.Designer.cs">
+      <DependentUpon>201906011741153_Add_Task-v2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\Employees.cs" />
@@ -211,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906011607017_Add_Task.resx">
       <DependentUpon>201906011607017_Add_Task.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906011741153_Add_Task-v2.resx">
+      <DependentUpon>201906011741153_Add_Task-v2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

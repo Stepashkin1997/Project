@@ -32,5 +32,7 @@ namespace Project.Models
 
         public int? ExecutorId { get; set; }//исполнитель задачи
         public virtual Employees Executor { get; set; }
+
+        public int Project { get; set; }//проект задачи
     }
 }

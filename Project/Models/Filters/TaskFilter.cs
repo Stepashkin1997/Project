@@ -7,5 +7,6 @@
         public string executor { get; set; }
         public string status { get; set; }
         public int priority { get; set; }
+        public int project { get; set; }
     }
 }
