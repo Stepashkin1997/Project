@@ -1,4 +1,6 @@
-﻿namespace Project.Models
+﻿using System.Collections.Generic;
+
+namespace Project.Models
 {
     public class Employees
     {
@@ -7,5 +9,6 @@
         public string Surname { get; set; }//Фамилия
         public string Middle_name { get; set; }//Отчество
         public string email { get; set; }//Почта
+        public ICollection<Task> Task { get; set; }
     }
 }
