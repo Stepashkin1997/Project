@@ -2,7 +2,7 @@
 
 namespace Project.Models
 {
-    public class Employees
+    public class Employees//cущность работник
     {
         public int Id { get; set; }
         public string Name { get; set; }//Имя

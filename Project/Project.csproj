@@ -145,7 +145,8 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\Employees.cs" />
-    <Compile Include="Models\Filter.cs" />
+    <Compile Include="Models\Filters\ProjectFilter.cs" />
+    <Compile Include="Models\Filters\TaskFilter.cs" />
     <Compile Include="Models\Projects.cs" />
     <Compile Include="Models\Projects_Employees.cs" />
     <Compile Include="Models\StringExtensions.cs" />
@@ -161,6 +162,7 @@
     <Content Include="Content\img\projects.png" />
     <Content Include="Content\img\plus.png" />
     <Content Include="Content\img\svedenia.png" />
+    <Content Include="Content\img\task.png" />
     <Content Include="Content\img\update.png" />
     <Content Include="Content\Style.css" />
     <Content Include="favicon.ico" />

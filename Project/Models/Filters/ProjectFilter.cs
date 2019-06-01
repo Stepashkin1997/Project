@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
-namespace Project.Models
+namespace Project.Models.Filters
 {
-    public class Filter
+    public class ProjectFilter
     {
         public string name { get; set; }
         public string customer { get; set; }

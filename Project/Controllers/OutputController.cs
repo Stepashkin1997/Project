@@ -1,10 +1,9 @@
 ﻿using Project.Models;
+using Project.Models.Filters;
 using Project.ViewModels;
 using System;
-using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
-using Filter = Project.Models.Filter;
 
 namespace Project.Controllers
 {
@@ -13,16 +12,59 @@ namespace Project.Controllers
         private DataContext context;
         // GET: Output
         public ActionResult Index()
-            
+
         {
             return View();
         }
 
         public ActionResult Tasks()//метод возвращающий предсталение с задачами
         {
+            context = new DataContext();
+            var result = context.Tasks;
+            ViewBag.Task = result;
+
+            //передача данных в представление
+            ViewBag.Names = result.Select(a => a.Name).Distinct().ToList();
+            ViewBag.Authors = result.Select(a => a.Author.Name).Distinct().ToList();
+            ViewBag.Executors = result.Select(a => a.Executor.Name).Distinct().ToList();
+            ViewBag.Status = result.Select(a => a.Status).Distinct().ToList();
+            ViewBag.Priorities = result.Select(a => a.Priority).Distinct().ToList();
+            return View("Tasks");
+        }
+
+        [HttpPost]
+        public ActionResult FiltersTask(TaskFilter filter)//Метод для фильтрации информации о задачах
+        {
             using (context = new DataContext())
             {
-                ViewBag.Task = context.Tasks.ToList();
+                var result = context.Tasks.ToList();
+
+                //передача данных в представление
+                ViewBag.Names = result.Select(a => a.Name).Distinct().ToList();
+                ViewBag.Authors = result.Select(a => a.Author.Name).Distinct().ToList();
+                ViewBag.Executors = result.Select(a => a.Executor.Name).Distinct().ToList();
+                ViewBag.Status = result.Select(a => a.Status).Distinct().ToList();
+                ViewBag.Priorities = result.Select(a => a.Priority).Distinct().ToList();
+
+
+                //Фильтрация результата через набор условий
+                if (filter.name != "All")//задано ли условие с именем задачи
+                    result = result.Where(a => a.Name.Contains(filter.name)).ToList(); 
+
+                if (filter.author != "All")//задано ли условие с автором
+                    result = result.Where(a => a.Author.Name.Contains(filter.author)).ToList();
+
+                if (filter.executor != "All")//задано ли условие с исполнителем
+                    result = result.Where(a => a.Executor.Name.Contains(filter.executor)).ToList();
+
+                if (filter.status != "All")//задано ли условие с статусом
+                    result = result.Where(a => a.Status.Contains(filter.status)).ToList();
+
+                if (filter.priority != -1)//задано ли условие с приоритетом
+                    result = result.Where(a => a.Priority == filter.priority).ToList();
+
+                //передача результата в представление
+                ViewBag.Task = result;
             }
             return View("Tasks");
         }
@@ -90,7 +132,7 @@ namespace Project.Controllers
         }
 
         [HttpPost]
-        public ActionResult Filters(Filter filter)//Метод для фильтрации информации о проектах
+        public ActionResult Filters(ProjectFilter filter)//Метод для фильтрации информации о проектах
         {
             using (context = new DataContext())
             {

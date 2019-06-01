@@ -37,7 +37,7 @@
     </div>
     <div style="display:inline-block; margin:0;  vertical-align: text-top;">
         <h3>Filter</h3>
-        @*<form action="/Output/Filters" method="post" style="width:200px; margin: 0 auto;">
+        <form action="/Output/FiltersTask" method="post" style="width:200px; margin: 0 auto;">
                 <ul>
                     <h3>By name</h3>
                     <li>
@@ -51,12 +51,12 @@
                             }
                         </select>
                     </li>
-                    <h3>By customer</h3>
+                    <h3>By author</h3>
                     <li>
-                        <select name="customer" id="customer" class="select">
+                        <select name="author" id="author" class="select">
                             @{
                                 <option value="All">-none-</option>
-                                foreach (var item in ViewBag.Customers)
+                                foreach (var item in ViewBag.Authors)
                                 {
                                     <option value="@item">@item</option>
                                 }
@@ -73,30 +73,15 @@
                             }
                         </select>
                     </li>
-                    <h3>By manager</h3>
+                    <h3>By status</h3>
                     <li>
-                        <select name="manager" id="manager" class="select">
+                        <select name="status" id="status" class="select">
                             <option value="All">-none-</option>
-                            @foreach (var item in ViewBag.Managers)
+                            @foreach (var item in ViewBag.Status)
                             {
                                 <option value="@item">@item</option>
                             }
                         </select>
-                    </li>
-                    <h3>By date</h3>
-                    <li>
-                        <ul>
-                            <h5>From</h5>
-                            <li class="select">
-                                <input type="date" name="start" value="2010-01-01"
-                                       max="2050-01-01" min="2010-01-01" class="select" />
-                            </li>
-                            <h5>To</h5>
-                            <li class="select">
-                                <input type="date" name="end" value="2050-01-01"
-                                       max="2050-01-01" min="2010-01-01" class="select" />
-                            </li>
-                        </ul>
                     </li>
                     <h3>By priority</h3>
                     <li>
@@ -110,7 +95,7 @@
                     </li>
                 </ul>
                 <input type="submit" value="Filter out" class="select" />
-            </form>*@
+            </form>
     </div>
 </div>
 

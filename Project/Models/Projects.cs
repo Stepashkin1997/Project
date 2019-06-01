@@ -2,7 +2,7 @@
 
 namespace Project.Models
 {
-    public class Projects
+    public class Projects//cущность проект
     {
         public int Id { get; set; }//столбец индификации
         public string Name { get; set; }//название проекта
