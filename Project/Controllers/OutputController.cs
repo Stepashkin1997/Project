@@ -1,4 +1,5 @@
 ﻿using Project.Models;
+using Project.ViewModels;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -26,7 +27,19 @@ namespace Project.Controllers
         {
             using (context = new DataContext())
             {
-                ViewBag.Projects = context.Project.ToList();
+                var result = context.Project.ToList().Join(context.Employee, a => a.Manager, b => b.Id, (p, c) => new ProjectView// результат
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Customer = p.Customer,
+                    Executor = p.Executor,
+                    Manager = c.Name + " " + c.Surname + " " + c.Middle_name,
+                    Date_start = p.Date_start.ToShortDateString(),
+                    Date_end = p.Date_end.ToShortDateString(),
+                    Info_Executor = p.Info_Executor,
+                    Priority = p.Priority
+                });
+                ViewBag.Projects = result.ToList();
             }
             return View("Projects");
         }
