@@ -11,8 +11,6 @@ namespace Project.Models
     }
     public class Task
     {
-        
-
         public int Id { get; set; }
         public string Name { get; set; }//название задачи,
 
@@ -20,7 +18,7 @@ namespace Project.Models
         public string Status
         {
             get { return StatusEnum.ToString(); }
-            private set { StatusEnum = value.ParseEnum<Status>(); }
+            set { StatusEnum = value.ParseEnum<Status>(); }
         }
 
         [NotMapped]
@@ -32,7 +30,7 @@ namespace Project.Models
         public int AuthorId { get; set; }//автор задачи
         public Employees Author { get; set; }
 
-        public int ExecutorId { get; set; }//исполнитель задачи
-        public Employees Executor { get; set; }
+        public int? ExecutorId { get; set; }//исполнитель задачи
+        public virtual Employees Executor { get; set; }
     }
 }

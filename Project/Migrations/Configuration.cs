@@ -9,7 +9,7 @@ namespace Project.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(Project.Models.DataContext context)
@@ -19,6 +19,5 @@ namespace Project.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
         }
-
     }
 }
