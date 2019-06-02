@@ -7,23 +7,37 @@
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script src="~/Scripts/Script.js"></script>
 }
-<div style="text-align:center; margin: 0 auto;">
-    <h1>
-        Table selection
-    </h1>
-    <select name="update" id="update">
-        @{
-            foreach (var item in ViewBag.List)
-            {
-                <option value="@item">@item</option>
-            }
-        }
-    </select>
-    <button id="ok">Select</button>
-</div>
-<form id="myForm" action="/Update/Index" method="get">
-    <table id="table"></table>
-    <div id="add"></div>
-    <input type="submit" value="Confirm" class="select" id="confirm" />
-</form>
 
+
+<div id="wrapper">
+    <div class="cover"></div>
+    <div class="modal">
+        <div class="content">
+            <h2>Add</h2>
+            <form id="AddForm" method="post">
+            </form>
+        </div>
+    </div>
+
+
+
+    <div style="text-align:center; margin: 0 auto;">
+        <h1>
+            Table selection
+        </h1>
+        <select name="update" id="update">
+            @{
+                foreach (var item in ViewBag.List)
+                {
+                    <option value="@item">@item</option>
+                }
+            }
+        </select>
+        <button id="ok">Select</button>
+    </div>
+    <form id="myForm" action="/Update/Index" method="get">
+        <table id="table"></table>
+        <div id="add"></div>
+        <input type="submit" value="Confirm" class="select" id="confirm" />
+    </form>
+</div>
