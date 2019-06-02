@@ -1,6 +1,5 @@
 ﻿using Project.Models;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -24,7 +23,7 @@ namespace Project.Controllers
                 switch (table)//выбор таблицы по запросу
                 {
                     case "Projects":
-                        var otdel = context.Project.ToList().Select(a => new { a.Id, a.Name, a.Customer, a.Executor, a.Manager, Date_start=a.Date_start.ToShortDateString(), Date_end=a.Date_end.ToShortDateString(), a.Info_Executor, a.Priority }).OrderBy(a => a.Id);
+                        var otdel = context.Project.ToList().Select(a => new { a.Id, a.Name, a.Customer, a.Executor, a.Manager, Date_start = a.Date_start.ToShortDateString(), Date_end = a.Date_end.ToShortDateString(), a.Info_Executor, a.Priority }).OrderBy(a => a.Id);
                         return Json(otdel);
                     case "Projects_Employees":
                         var product = context.Project_Employee.ToList();
@@ -49,7 +48,7 @@ namespace Project.Controllers
         {
             using (context = new DataContext())
             {
-                var edit=context.Employee.Where(a=>a.Id==employees.Id).FirstOrDefault();
+                var edit = context.Employee.Where(a => a.Id == employees.Id).FirstOrDefault();
                 edit.Copy(employees);
                 context.SaveChanges();
             }
@@ -59,10 +58,10 @@ namespace Project.Controllers
         [HttpPost]
         public ActionResult EditProjects(Projects projects)//изменение Projects
         {
-            var a=Request.Params;
             using (context = new DataContext())
             {
-                context.Entry(projects).State = EntityState.Modified;
+                var edit = context.Project.Where(a => a.Id == projects.Id).FirstOrDefault();
+                edit.Copy(projects);
                 context.SaveChanges();
             }
             return RedirectToAction("Index");
@@ -73,7 +72,8 @@ namespace Project.Controllers
         {
             using (context = new DataContext())
             {
-                context.Entry(p_e).State = EntityState.Modified;
+                var edit = context.Project_Employee.Where(a => a.Id == p_e.Id).FirstOrDefault();
+                edit.Copy(p_e);
                 context.SaveChanges();
             }
             return RedirectToAction("Index");
@@ -84,7 +84,8 @@ namespace Project.Controllers
         {
             using (context = new DataContext())
             {
-                context.Entry(task).State = EntityState.Modified;
+                var edit = context.Tasks.Where(a => a.Id == task.Id).FirstOrDefault();
+                edit.Copy(task);
                 context.SaveChanges();
             }
             return RedirectToAction("Select");
@@ -121,17 +122,8 @@ namespace Project.Controllers
         {
             using (context = new DataContext())
             {
-                try
-                {
-                    context.Project.Add(projects);
-                    context.SaveChanges();
-                }
-                catch (System.Exception)
-                {
-
-                    throw;
-                }
-           
+                context.Project.Add(projects);
+                context.SaveChanges();
             }
             return RedirectToAction("Index");
         }

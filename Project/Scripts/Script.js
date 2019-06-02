@@ -6,7 +6,10 @@ var length;
 var table;
 var lmap = commands.size;
 var lrow = 0;
+
 $(document).ready(function () {
+
+    //ajax запрос таблиц
     $('#ok').bind('click', function () {
         var a = $("select#update").val();
         $.ajax({
@@ -21,9 +24,15 @@ $(document).ready(function () {
         });
     });
 
+
+    //удаление по клику
     $('#table').on("click", ".delete", function () {
         if (confirm("Are you sure?")) {
+
+            //SQL
             var del = "DELETE FROM " + $("select#update").val() + " WHERE id=" + $(this).parent().parent().attr('id') + "; ";
+
+            //ajax отпрака удаления
             $.ajax({
                 url: "/Update/Delete/",
                 type: "POST",
@@ -40,7 +49,7 @@ $(document).ready(function () {
         } else;
     });
 
-    //вызов модального окна изменнения по клику на ячейку
+    //вызов модального окна изменнений по клику на ячейку
     $('#table').on("click", "td", function (e) {
         modal.fadeIn();
         $("#ChangeForm").attr('action', "Edit" + $("select option:selected").html());
@@ -49,6 +58,8 @@ $(document).ready(function () {
         var id = $(this).parent().attr("id");
         $('#hidden').val(id);
         var i = 0;
+
+        //инициализация полей из строки
         $('#ActionForm').children("input").each(function () {
             $(this).attr('value',ob.eq(i++).text());
         });
@@ -56,6 +67,8 @@ $(document).ready(function () {
     });
 });
 
+
+//метод выполняющийся при успешном выполнении ajax запроса таблиц
 function onAjaxSuccess(data) {
     //первоначальная отчистка
     $("#add").empty();
@@ -69,6 +82,7 @@ function onAjaxSuccess(data) {
 
     $("#table").append("<caption><h1>" + $("select option:selected").html() + "</h1></caption>");
 
+    //Формирование заголовка таблицы
     $("#table").append("<tr id='title'>");
     for (var key in data[0]) {
         if (key == "Id") {
@@ -84,6 +98,8 @@ function onAjaxSuccess(data) {
     $("#title").append("<th>delete</th>");
 
     length = data.length + 1;
+
+    //Заполнение таблицы
     for (var i = 0; i < data.length; i++) {
         $("#table").append("<tr id='" + data[i].Id + "'>");
 
@@ -105,6 +121,8 @@ function onAjaxSuccess(data) {
         btn = $('#add'),
         modal = $('.cover, .modal, .content');
 
+
+    //вызов модального окна для добаления
     btn.on('click', function () {
         modal.fadeIn();
         $("#hidden").attr('value', '');
@@ -112,7 +130,7 @@ function onAjaxSuccess(data) {
         $("#ActionHead").html("Add");
     });
 
-    // close modal
+    //закрытие модального окна
     $('.modal').click(function () {
         wrap.on('click', function (event) {
             var select = $('.content');
