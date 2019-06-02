@@ -52,7 +52,7 @@ $(document).ready(function () {
     //вызов модального окна изменнений по клику на ячейку
     $('#table').on("click", "td", function (e) {
         modal.fadeIn();
-        $("#ChangeForm").attr('action', "Edit" + $("select option:selected").html());
+        $("#ChangeForm").attr('action', "/Update/Edit" + $("select option:selected").html()+"/");
         $("#ActionHead").html("Edit");
         var ob = $(this).parent().children("td");
         var id = $(this).parent().attr("id");
@@ -126,7 +126,7 @@ function onAjaxSuccess(data) {
     btn.on('click', function () {
         modal.fadeIn();
         $("#hidden").attr('value', '');
-        $("#ChangeForm").attr('action', "Add" + $("select option:selected").html());
+        $("#ChangeForm").attr('action', "/Update/Add" + $("select option:selected").html()+"/");
         $("#ActionHead").html("Add");
     });
 
