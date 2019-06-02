@@ -2,14 +2,14 @@
 
 namespace Project.Models.Filters
 {
-    public class ProjectFilter
+    public class ProjectFilter//Модель для фильра проектов
     {
-        public string name { get; set; }
-        public string customer { get; set; }
-        public string executor { get; set; }
-        public string manager { get; set; }
-        public DateTime start { get; set; }
-        public DateTime end { get; set; }
-        public int priority { get; set; }
+        public string name { get; set; }//название проекта
+        public string customer { get; set; }//имя заказчика
+        public string executor { get; set; }//название компании-исполнителя
+        public string manager { get; set; }//имя руководителя
+        public DateTime start { get; set; }//дата начала
+        public DateTime end { get; set; }//дата конца
+        public int priority { get; set; }//целочисленный приоритет
     }
 }

@@ -5,7 +5,7 @@ using System.Web.Mvc;
 
 namespace Project.Controllers
 {
-    public class UpdateController : Controller//контроллер для изменения БД
+    public sealed class UpdateController : Controller//контроллер для изменения БД
     {
         private DataContext context;
         // GET: Update
@@ -49,7 +49,7 @@ namespace Project.Controllers
             using (context = new DataContext())
             {
                 var edit = context.Employee.Where(a => a.Id == employees.Id).FirstOrDefault();
-                edit.Copy(employees);
+                edit.Copy(employees);//копирование
                 context.SaveChanges();
             }
             return RedirectToAction("Index");
@@ -61,7 +61,7 @@ namespace Project.Controllers
             using (context = new DataContext())
             {
                 var edit = context.Project.Where(a => a.Id == projects.Id).FirstOrDefault();
-                edit.Copy(projects);
+                edit.Copy(projects);//копирование
                 context.SaveChanges();
             }
             return RedirectToAction("Index");
@@ -73,7 +73,7 @@ namespace Project.Controllers
             using (context = new DataContext())
             {
                 var edit = context.Project_Employee.Where(a => a.Id == p_e.Id).FirstOrDefault();
-                edit.Copy(p_e);
+                edit.Copy(p_e);//копирование
                 context.SaveChanges();
             }
             return RedirectToAction("Index");
@@ -85,7 +85,7 @@ namespace Project.Controllers
             using (context = new DataContext())
             {
                 var edit = context.Tasks.Where(a => a.Id == task.Id).FirstOrDefault();
-                edit.Copy(task);
+                edit.Copy(task);//копирование
                 context.SaveChanges();
             }
             return RedirectToAction("Select");
@@ -100,7 +100,7 @@ namespace Project.Controllers
             {
                 if (command != null)
                 {
-                    context.Database.ExecuteSqlCommand(@command);
+                    context.Database.ExecuteSqlCommand(@command);//выполнение sql команды
                 }
             }
         }
@@ -108,7 +108,7 @@ namespace Project.Controllers
 
         //методы добавления
         [HttpPost]
-        public ActionResult AddEmployees(Employees employees)
+        public ActionResult AddEmployees(Employees employees)//добавление сотрудника
         {
             using (context = new DataContext())
             {
@@ -118,7 +118,7 @@ namespace Project.Controllers
             return RedirectToAction("Index");
         }
         [HttpPost]
-        public ActionResult AddProjects(Projects projects)
+        public ActionResult AddProjects(Projects projects)//добавление проекта
         {
             using (context = new DataContext())
             {
@@ -128,7 +128,7 @@ namespace Project.Controllers
             return RedirectToAction("Index");
         }
         [HttpPost]
-        public ActionResult AddProjects_Employees(Projects_Employees p_e)
+        public ActionResult AddProjects_Employees(Projects_Employees p_e)//добавление сотрудников на проект
         {
             using (context = new DataContext())
             {
@@ -138,7 +138,7 @@ namespace Project.Controllers
             return RedirectToAction("Index");
         }
         [HttpPost]
-        public ActionResult AddTask(Task task)
+        public ActionResult AddTask(Task task)//добавление задачи
         {
             using (context = new DataContext())
             {

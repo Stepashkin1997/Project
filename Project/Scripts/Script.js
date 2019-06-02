@@ -101,8 +101,10 @@ function onAjaxSuccess(data) {
 
     //Заполнение таблицы
     for (var i = 0; i < data.length; i++) {
+        //создание строки
         $("#table").append("<tr id='" + data[i].Id + "'>");
 
+        //заполнение строки
         for (var key in data[i]) {
             if (key == "Id") {
                 continue;
