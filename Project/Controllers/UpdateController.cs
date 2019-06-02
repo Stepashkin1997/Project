@@ -45,19 +45,21 @@ namespace Project.Controllers
 
         //методы изменения
         [HttpPost]
-        public ActionResult EditEmployees(Employees employees)
+        public ActionResult EditEmployees(Employees employees)//изменение Employees
         {
             using (context = new DataContext())
             {
-                context.Entry(employees).State = EntityState.Modified;
+                var edit=context.Employee.Where(a=>a.Id==employees.Id).FirstOrDefault();
+                edit.Copy(employees);
                 context.SaveChanges();
             }
             return RedirectToAction("Index");
         }
 
         [HttpPost]
-        public ActionResult EditProjects(Projects projects)
+        public ActionResult EditProjects(Projects projects)//изменение Projects
         {
+            var a=Request.Params;
             using (context = new DataContext())
             {
                 context.Entry(projects).State = EntityState.Modified;
@@ -67,7 +69,7 @@ namespace Project.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditProjects_Employees(Projects_Employees p_e)
+        public ActionResult EditProjects_Employees(Projects_Employees p_e)//изменение Projects_Employees
         {
             using (context = new DataContext())
             {
@@ -78,7 +80,7 @@ namespace Project.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditTask(Task task)
+        public ActionResult EditTask(Task task)//изменение Task
         {
             using (context = new DataContext())
             {

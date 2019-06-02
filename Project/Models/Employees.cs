@@ -14,5 +14,12 @@ namespace Project.Models
         {
             Task = new HashSet<Task>();
         }
+        public void Copy(Employees employees)//конструктор копирования
+        {
+            Name = employees.Name;
+            Surname = employees.Surname;
+            Middle_name = employees.Middle_name;
+            email = employees.email;
+        }
     }
 }

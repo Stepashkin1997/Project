@@ -40,26 +40,19 @@ $(document).ready(function () {
         } else;
     });
 
-
+    //вызов модального окна изменнения по клику на ячейку
     $('#table').on("click", "td", function (e) {
-
-        //var t = e.target || e.srcElement;
-        //var val = $(this).text();
-        //$(this).html("<input type='text' value='" + val + "' name='" + $(this).attr('id') + "' id='" + $(this).attr('id') + "'/>");
-        //$(this).find('input').focus();
-        //$(this).find('input').blur(function (e) {
-        //    if ($(this).parent().parent().attr('class') == 'add')
-        //        return;
-        //    if (val != $(this).val()) {
-        //        var a = $(this).parent().parent().attr('id');
-        //        $(this).attr('map', commands.size);
-        //        commands.set(lmap++, "UPDATE " + $("select#update").val() + " SET " + $(this).attr('id') + "='" + $(this).val() + "' WHERE id=" + $(this).parent().parent().attr('id') + "; ")
-        //        $(this).attr('readonly', true).removeAttr("id");
-        //    }
-        //    else {
-        //        $(this).parent().html($(this).val());
-        //    }
-        //});
+        modal.fadeIn();
+        $("#ChangeForm").attr('action', "Edit" + $("select option:selected").html());
+        $("#ActionHead").html("Edit");
+        var ob = $(this).parent().children("td");
+        var id = $(this).parent().attr("id");
+        $('#hidden').val(id);
+        var i = 0;
+        $('#ActionForm').children("input").each(function () {
+            $(this).attr('value',ob.eq(i++).text());
+        });
+       
     });
 });
 
@@ -67,7 +60,7 @@ function onAjaxSuccess(data) {
     //первоначальная отчистка
     $("#add").empty();
     $("#table").empty();
-    $("#AddForm").empty();
+    $("#ActionForm").empty();
 
     //parse
     data = jQuery.parseJSON(data);
@@ -75,7 +68,6 @@ function onAjaxSuccess(data) {
 
 
     $("#table").append("<caption><h1>" + $("select option:selected").html() + "</h1></caption>");
-    $("#AddForm").attr('action', "Add" + $("select option:selected").html());
 
     $("#table").append("<tr id='title'>");
     for (var key in data[0]) {
@@ -84,10 +76,11 @@ function onAjaxSuccess(data) {
         }
         lrow++;
         $("#title").append("<th>" + key + "</th>");
-        $("#AddForm").append("<h3>" + key + "</h3>");
-        $("#AddForm").append("<input type='text' name='" + key + "'>");
+        $("#ActionForm").append("<h3>" + key + "</h3>");
+        $("#ActionForm").append("<input type='text' name='" + key + "'>");
     }
-    $("#AddForm").append("<input type='submit'/>");
+    $('#ChangeForm').append("<input type='hidden' name='Id' id='hidden' value=''>");
+    $("#ChangeForm").append("<input type='submit'>");
     $("#title").append("<th>delete</th>");
 
     length = data.length + 1;
@@ -114,6 +107,9 @@ function onAjaxSuccess(data) {
 
     btn.on('click', function () {
         modal.fadeIn();
+        $("#hidden").attr('value', '');
+        $("#ChangeForm").attr('action', "Add" + $("select option:selected").html());
+        $("#ActionHead").html("Add");
     });
 
     // close modal

@@ -13,5 +13,16 @@ namespace Project.Models
         public DateTime Date_end { get; set; }//дата окончания проекта
         public string Info_Executor { get; set; }//данные об исполнителях проекта
         public int Priority { get; set; }//приоритет проекта
+        public void Copy(Projects projects)//контструкор копирования
+        {
+            Name = projects.Name;
+            Customer = projects.Customer;
+            Executor = projects.Executor;
+            Manager = projects.Manager;
+            Date_start = projects.Date_start;
+            Date_end = projects.Date_end;
+            Info_Executor = projects.Info_Executor;
+            Priority = projects.Priority;
+        }
     }
 }

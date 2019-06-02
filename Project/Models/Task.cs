@@ -11,6 +11,17 @@ namespace Project.Models
     }
     public class Task
     {
+        public void Copy(Task task)//контструкор копирования
+        {
+            Name = task.Name;
+            Status = task.Status;
+            Executor = task.Executor;
+            Comment = task.Comment;
+            AuthorId = task.AuthorId;
+            ExecutorId = task.ExecutorId;
+            Project = task.Project;
+            Priority = task.Priority;
+        }
         public int Id { get; set; }
         public string Name { get; set; }//название задачи,
 
