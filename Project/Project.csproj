@@ -158,6 +158,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Projects_EmployeesView.cs" />
     <Compile Include="ViewModels\ProjectView.cs" />
+    <Compile Include="ViewModels\TaskView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\img\emloye.png" />
@@ -201,6 +202,8 @@
     <Content Include="Views\Output\EmployeesinProjects.cshtml" />
     <Content Include="Views\Output\Tasks.cshtml" />
     <Content Include="Views\Update\Change.cshtml" />
+    <Content Include="Views\Shared\UpdateLayout.cshtml" />
+    <Content Include="Views\Update\Task.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

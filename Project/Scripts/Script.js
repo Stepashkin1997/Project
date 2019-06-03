@@ -4,19 +4,10 @@ var types = [];
 //начальный метод скрипта
 $(document).ready(function () {
 
-    //ajax запрос таблиц
-    $('#ok').bind('click', function () {
+
+    $('#chtbl').change( function () {
         var a = $("select#update").val();
-        $.ajax({
-            url: "/Update/Select/",
-            type: "POST",
-            dataType: "text",
-            data: "table=" + a,
-            success: onAjaxSuccess,
-            error: function () {
-                alert("Server is fallen");
-            }
-        });
+        $('#chtbl').attr('action',"/Update/Index/"+a);
     });
 
 
@@ -109,54 +100,6 @@ $(document).ready(function () {
         }
     });
 
-
-});
-
-
-//метод выполняющийся при успешном выполнении ajax запроса таблиц
-function onAjaxSuccess(data) {
-    //первоначальная отчистка
-    $("#add").empty();
-    $("#table").empty();
-    $("#ActionForm").empty();
-
-    //parse
-    data = jQuery.parseJSON(data);
-
-    $("#table").append("<caption><h1>" + $("select option:selected").html() + "</h1></caption>");
-
-    //Формирование заголовка таблицы
-    $("#table").append("<tr id='title'>");
-    for (var key in data[0]) {
-        if (key == "Id") {
-            continue;
-        }
-        
-        $("#title").append("<th>" + key + "</th>");
-        $("#ActionForm").append("<h3>" + key + "</h3>");
-        $("#ActionForm").append("<input type='text' name='" + key + "'>");
-    }
-    $('#ChangeForm').append("<input type='hidden' name='Id' id='hidden' value=''>");
-    $("#ChangeForm").append("<input type='submit'>");
-    $("#title").append("<th>delete</th>");
-
-    //Заполнение таблицы
-    for (var i = 0; i < data.length; i++) {
-        //создание строки
-        $("#table").append("<tr id='" + data[i].Id + "'>");
-
-        //заполнение строки
-        for (var key in data[i]) {
-            if (key == "Id") {
-                continue;
-            }
-            else {
-                $("#" + data[i].Id + "").append("<td id='" + key + "'>" + (data[i])[key] + "</td>");
-            }
-        }
-        $("#" + data[i].Id + "").append("<th><img src='/Content/img/minus.png' class='delete'/></th>");
-    }
-    $("#add").append("<img src='/Content/img/plus.png' id='plus'>");
     $("#add").css('cursor', ' pointer');
     $(".delete").css('cursor', ' pointer');
 
@@ -184,5 +127,8 @@ function onAjaxSuccess(data) {
         });
     });
 
-}
+});
+
+
+
 

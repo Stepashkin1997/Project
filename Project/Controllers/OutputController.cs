@@ -2,6 +2,7 @@
 using Project.Models.Filters;
 using Project.ViewModels;
 using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -19,17 +20,21 @@ namespace Project.Controllers
 
         public ActionResult Tasks()//метод возвращающий предсталение с задачами
         {
-            context = new DataContext();
-            var result = context.Tasks;
-            ViewBag.Task = result;
+            using (context = new DataContext())
+            {
+                context.Tasks.Load();
+                var result = context.Tasks.Local;
+                ViewBag.Table = result;
 
-            //передача данных в представление
-            ViewBag.Names = result.Select(a => a.Name).Distinct().ToList();
-            ViewBag.Authors = result.Select(a => a.Author.Name).Distinct().ToList();
-            ViewBag.Executors = result.Select(a => a.Executor.Name).Distinct().ToList();
-            ViewBag.Status = result.Select(a => a.Status).Distinct().ToList();
-            ViewBag.Priorities = result.Select(a => a.Priority).Distinct().ToList();
-            ViewBag.Project = result.Select(a => a.Project).Distinct().ToList();
+
+                //передача данных в представление
+                ViewBag.Names = result.Select(a => a.Name).Distinct().ToList();
+                ViewBag.Authors = result.Select(a => a.Author.Name).Distinct().ToList();
+                ViewBag.Executors = result.Select(a => a.Executor.Name).Distinct().ToList();
+                ViewBag.Status = result.Select(a => a.Status).Distinct().ToList();
+                ViewBag.Priorities = result.Select(a => a.Priority).Distinct().ToList();
+                ViewBag.Project = result.Select(a => a.Project).Distinct().ToList();
+            }
             return View("Tasks");
         }
 
@@ -51,7 +56,7 @@ namespace Project.Controllers
 
                 //Фильтрация результата через набор условий
                 if (filter.name != "All")//задано ли условие с именем задачи
-                    result = result.Where(a => a.Name.Contains(filter.name)).ToList(); 
+                    result = result.Where(a => a.Name.Contains(filter.name)).ToList();
 
                 if (filter.author != "All")//задано ли условие с автором
                     result = result.Where(a => a.Author.Name.Contains(filter.author)).ToList();
@@ -124,7 +129,6 @@ namespace Project.Controllers
                     return View("Error");//если запрашиваемый проект не существует вернуть ошибку
                 }
                 var result = context.Project_Employee.ToList().Where(r => r.Project == id).Join(context.Employee, a => a.Employee, b => b.Id, (p, c) =>
-
                     c.Name + " " + c.Surname + " " + c.Middle_name
                 );// соединение таблиц Project_Employee и Employee и выборка полного имени
 

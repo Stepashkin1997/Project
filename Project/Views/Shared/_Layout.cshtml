@@ -10,14 +10,6 @@
     <a href="/Home/Index" style="position:absolute; top:5px; right:5px;">
         <img src="~/Content/img/home.png" title="На начальную страницу" />
     </a>
-    @*@{
-        if (ViewBag.Back != null)
-        {
-            <a href="@ViewBag.Back" style="position:absolute; top:5px; left:5px;">
-                <img src="~/Content/img/back.png" title="Назад" />
-            </a>
-        }
-    }*@
     @RenderBody()
 </body>
 </html>

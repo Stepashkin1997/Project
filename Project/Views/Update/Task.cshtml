@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "Task";
+    Layout = "~/Views/Shared/UpdateLayout.cshtml";
+}
+
+<div class="cover"></div>
+<div class="modal">
+    <div class="content">
+        <h2 id="ActionHead">Add</h2>
+        <form id="ChangeForm" method="post">
+            <div id="ActionForm">
+                <h3>Name</h3>
+                <input type="text" name="Name" value="" />
+                <h3>Author</h3>
+                <input type="number" name="Author" value="" />
+                <h3>Executor</h3>
+                <input type="number" name="Executor" value="" />
+                <h3>Status</h3>
+                <input type="text" name="Status" value="" />
+                <h3>Comment</h3>
+                <input type="text" name="Comment" value="" />
+                <h3>Priority</h3>
+                <input type="number" name="Priority" value="" />
+                <h3>Project</h3>
+                <input type="number" name="Project" value="" />
+            </div>
+            <input type="hidden" name="Id" id="hidden" value="" />
+            <input type="submit" />
+        </form>
+    </div>
+</div>
+
+
+
+
+<form id="myForm" action="/Update/Index" method="get">
+    <table id="table">
+        <caption>
+            <h2>Tasks</h2>
+        </caption>
+        <tr>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Executor</th>
+            <th>Status</th>
+            <th>Comment</th>
+            <th>Priority</th>
+            <th>Project</th>
+            <th>delete</th>
+        </tr>
+        @{
+            foreach (var item in ViewBag.Table)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.AuthorId</td>
+                    <td>@item.ExecutorId</td>
+                    <td>@item.Status</td>
+                    <td>@item.Comment</td>
+                    <td>@item.Priority</td>
+                    <td>@item.Project</td>
+                    <th>
+                        <img src='/Content/img/minus.png' class='delete' />
+                    </th>
+                </tr>
+            }
+        }
+    </table>
+    <div id="add">
+        <img src='/Content/img/plus.png' id='plus'>
+    </div>
+</form>
+
+
+
+

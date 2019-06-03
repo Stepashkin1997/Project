@@ -1,5 +1,7 @@
 ﻿using Project.Models;
+using Project.ViewModels;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -9,38 +11,50 @@ namespace Project.Controllers
     {
         private DataContext context;
         // GET: Update
-        public ActionResult Index()
+        public ActionResult Index(string id)
         {
-
             ViewBag.List = new List<string>() { "Employees", "Projects", "Projects_Employees", "Task" };//список имен таблиц
-            return View();
-        }
 
-        [HttpPost]
-        public JsonResult Select(string table)//post метод возвращающий таблицы в JSON
-        {
             using (context = new DataContext())
             {
-                switch (table)//выбор таблицы по запросу
+                switch (id)//выбор таблицы по запросу
                 {
                     case "Projects":
-                        var otdel = context.Project.ToList().Select(a => new { a.Id, a.Name, a.Customer, a.Executor, a.Manager, Date_start = a.Date_start.ToShortDateString(), Date_end = a.Date_end.ToShortDateString(), a.Info_Executor, a.Priority }).OrderBy(a => a.Id);
-                        return Json(otdel);
+                        ViewBag.Table = context.Project.ToList().Join(context.Employee, a => a.Manager, b => b.Id, (p, c) => new ProjectView// соединение таблиц Project и Employee и выборка для представления
+                        {
+                            Id = p.Id,
+                            Name = p.Name,
+                            Customer = p.Customer,
+                            Executor = p.Executor,
+                            Manager = c.Name + " " + c.Surname + " " + c.Middle_name,//Конкатинация Имени Фамилии и Отчества
+                            Date_start = p.Date_start.ToShortDateString(),
+                            Date_end = p.Date_end.ToShortDateString(),
+                            Info_Executor = p.Info_Executor,
+                            Priority = p.Priority
+                        }).ToList();
+                        return View("Projects");
+
                     case "Projects_Employees":
-                        var product = context.Project_Employee.ToList();
-                        return Json(product);
+                        ViewBag.Table = context.Project_Employee.ToList().Join(context.Employee, a => a.Employee, b => b.Id, (p, c) =>
+                            c.Name + " " + c.Surname + " " + c.Middle_name
+                        );// соединение таблиц Project_Employee и Employee и выборка полного имени
+                        return View("Projects_Employees");
+
                     case "Employees":
-                        var employee = context.Employee.ToList().Select(a => new { a.Id, a.Name, a.Surname, a.Middle_name, a.email }).OrderBy(a => a.Id);
-                        return Json(employee);
+                        ViewBag.Table = context.Employee.ToList();
+                        return View("Employees");
+
                     case "Task":
-                        var task = context.Tasks.ToList().Select(a => new { a.Id, a.Name, a.Status, a.Comment, a.Priority, a.AuthorId, a.ExecutorId }).OrderBy(a => a.Id);
-                        return Json(task);
+                        context.Tasks.Load();
+                        var result= context.Tasks.Local;
+                        ViewBag.Table = result;
+                        return View("Task");
+
                     default:
-                        return null;
+                        return View();
                 }
             }
         }
-
 
 
         //методы изменения
