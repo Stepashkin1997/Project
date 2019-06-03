@@ -39,6 +39,8 @@ table {
 
 th {
     border: 1px solid grey;
+    background-color: aqua;
+    cursor: pointer;
 }
 
 td {
@@ -121,4 +123,8 @@ form {
     background-color: #FAFAFA;
     z-index: 300;
     padding: 50px 0;
+}
+
+.srt {
+    background-color: yellow;
 }

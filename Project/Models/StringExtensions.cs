@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Project.Models
 {
-    public static class StringExtensions
+    public static class StringExtensions//расширение для класса String
     {
-        public static T ParseEnum<T>(this string value)
+        public static T ParseEnum<T>(this string value)//метод преобразующий строку в Enum определенного типа
         {
             return (T)Enum.Parse(typeof(T), value, true);
         }

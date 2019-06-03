@@ -200,6 +200,7 @@
     <Content Include="Views\Output\Projects.cshtml" />
     <Content Include="Views\Output\EmployeesinProjects.cshtml" />
     <Content Include="Views\Output\Tasks.cshtml" />
+    <Content Include="Views\Update\Change.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

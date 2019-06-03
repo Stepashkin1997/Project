@@ -11,6 +11,7 @@ namespace Project.Controllers
         // GET: Update
         public ActionResult Index()
         {
+
             ViewBag.List = new List<string>() { "Employees", "Projects", "Projects_Employees", "Task" };//список имен таблиц
             return View();
         }

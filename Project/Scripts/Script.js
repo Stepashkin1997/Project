@@ -1,12 +1,7 @@
 ﻿var wrap;
+var types = [];
 
-
-var commands = new Map();
-var length;
-var table;
-var lmap = commands.size;
-var lrow = 0;
-
+//начальный метод скрипта
 $(document).ready(function () {
 
     //ajax запрос таблиц
@@ -18,7 +13,7 @@ $(document).ready(function () {
             dataType: "text",
             data: "table=" + a,
             success: onAjaxSuccess,
-            error: function (response) {
+            error: function () {
                 alert("Server is fallen");
             }
         });
@@ -50,9 +45,9 @@ $(document).ready(function () {
     });
 
     //вызов модального окна изменнений по клику на ячейку
-    $('#table').on("click", "td", function (e) {
+    $('#table').on("click", "td", function () {
         modal.fadeIn();
-        $("#ChangeForm").attr('action', "/Update/Edit" + $("select option:selected").html()+"/");
+        $("#ChangeForm").attr('action', "/Update/Edit" + $("select option:selected").html() + "/");
         $("#ActionHead").html("Edit");
         var ob = $(this).parent().children("td");
         var id = $(this).parent().attr("id");
@@ -61,10 +56,60 @@ $(document).ready(function () {
 
         //инициализация полей из строки
         $('#ActionForm').children("input").each(function () {
-            $(this).attr('value',ob.eq(i++).text());
+            $(this).attr('value', ob.eq(i++).text());
         });
-       
     });
+
+    //метод сортировки для ассоциативного массива
+    function compare(a, b) {
+        if (a.count < b.count) {
+            return -1;
+        }
+        if (a.count > b.count) {
+            return 1;
+        }
+        return 0;
+    }
+
+    //оброботчик события клика на Th, сортировка таблицы по столбцу
+    $('#table').on("click", "th", function () {
+        if ($(this).children("img").attr('class') == "delete" || $(this).html() =="delete")
+            return;
+
+        //отчиска класса предыдущего сортируемого
+        $('.srt').removeAttr('class');
+            
+        //сортируемый столбец
+        var search = $(this).html();
+        $(this).attr('class','srt');
+
+        var col = [];
+
+        //формирование массива - id,count
+        $('#table').children('tr:not(#title)').each(function () {
+            var id = $(this).attr('id');
+            var count = $(this).find("td#" + search).html();
+            col.push({ id: id, count: count });
+        });
+
+        //сортировка
+        col.sort(compare);
+        if ($(this).attr('id') == 'srt') {
+            col.reverse();
+            $(this).removeAttr('id');
+        }
+        else {
+            $(this).attr('id', 'srt');
+        }
+
+        //формирование нового порядка в таблице
+        for (var i = 0; i < col.length; i++) {
+            var id = col[i].id;
+            $("#" + id).appendTo($("#table"));
+        }
+    });
+
+
 });
 
 
@@ -77,8 +122,6 @@ function onAjaxSuccess(data) {
 
     //parse
     data = jQuery.parseJSON(data);
-    table = data;
-
 
     $("#table").append("<caption><h1>" + $("select option:selected").html() + "</h1></caption>");
 
@@ -88,7 +131,7 @@ function onAjaxSuccess(data) {
         if (key == "Id") {
             continue;
         }
-        lrow++;
+        
         $("#title").append("<th>" + key + "</th>");
         $("#ActionForm").append("<h3>" + key + "</h3>");
         $("#ActionForm").append("<input type='text' name='" + key + "'>");
@@ -96,8 +139,6 @@ function onAjaxSuccess(data) {
     $('#ChangeForm').append("<input type='hidden' name='Id' id='hidden' value=''>");
     $("#ChangeForm").append("<input type='submit'>");
     $("#title").append("<th>delete</th>");
-
-    length = data.length + 1;
 
     //Заполнение таблицы
     for (var i = 0; i < data.length; i++) {
@@ -128,7 +169,7 @@ function onAjaxSuccess(data) {
     btn.on('click', function () {
         modal.fadeIn();
         $("#hidden").attr('value', '');
-        $("#ChangeForm").attr('action', "/Update/Add" + $("select option:selected").html()+"/");
+        $("#ChangeForm").attr('action', "/Update/Add" + $("select option:selected").html() + "/");
         $("#ActionHead").html("Add");
     });
 
@@ -142,4 +183,6 @@ function onAjaxSuccess(data) {
             wrap.unbind('click');
         });
     });
+
 }
+
