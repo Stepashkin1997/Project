@@ -137,8 +137,12 @@ function onAjaxSuccess(data) {
         $("#ActionForm").append("<input type='text' name='" + key + "'>");
     }
     $('#ChangeForm').append("<input type='hidden' name='Id' id='hidden' value=''>");
-    $("#ChangeForm").append("<input type='submit'>");
+    $("#ChangeForm").append("<input type='submit' id='action'>");
     $("#title").append("<th>delete</th>");
+
+    $('#action').bind('click', function () {
+        return;
+    });
 
     //Заполнение таблицы
     for (var i = 0; i < data.length; i++) {
