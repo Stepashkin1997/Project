@@ -170,7 +170,6 @@
     <Compile Include="Models\Filters\TaskFilter.cs" />
     <Compile Include="Models\Projects.cs" />
     <Compile Include="Models\Projects_Employees.cs" />
-    <Compile Include="Models\StringExtensions.cs" />
     <Compile Include="Models\Task.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Projects_EmployeesView.cs" />

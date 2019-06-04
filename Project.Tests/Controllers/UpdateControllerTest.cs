@@ -42,20 +42,5 @@ namespace Project.Tests.Controllers
             }
         }
 
-
-        [TestMethod]
-        public void EditEmployeesViewResultNotNullForValid()
-        {
-            UpdateController controller = new UpdateController();
-
-            ViewResult result = controller.Index() as ViewResult;
-            foreach (var item in result.ViewBag.List)
-            {
-                JsonResult test = controller.Select(item) as JsonResult;
-
-                Assert.IsNotNull(test);
-            }
-        }
-
     }
 }
