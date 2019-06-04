@@ -33,7 +33,7 @@ namespace Project.Controllers
                         var employee = context.Employee.ToList().Select(a => new { a.Id, a.Name, a.Surname, a.Middle_name, a.email }).OrderBy(a => a.Id);
                         return Json(employee);
                     case "Task":
-                        var task = context.Tasks.ToList().Select(a => new { a.Id, a.Name, a.Status, a.Comment, a.Priority, a.AuthorId, a.ExecutorId }).OrderBy(a => a.Id);
+                        var task = context.Tasks.ToList().Select(a => new { a.Id, a.Name, a.Status, a.Comment, a.Priority, a.AuthorId, a.ExecutorId, a.Project }).OrderBy(a => a.Id);
                         return Json(task);
                     default:
                         return null;
@@ -47,49 +47,67 @@ namespace Project.Controllers
         [HttpPost]
         public ActionResult EditEmployees(Employees employees)//изменение Employees
         {
-            using (context = new DataContext())
+            if (ModelState.IsValid)
             {
-                var edit = context.Employee.Where(a => a.Id == employees.Id).FirstOrDefault();
-                edit.Copy(employees);//копирование
-                context.SaveChanges();
+
+
+                using (context = new DataContext())
+                {
+                    var edit = context.Employee.Where(a => a.Id == employees.Id).FirstOrDefault();
+                    edit.Copy(employees);//копирование
+                    context.SaveChanges();
+                }
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+            return View("Error");
         }
 
         [HttpPost]
         public ActionResult EditProjects(Projects projects)//изменение Projects
         {
-            using (context = new DataContext())
+            if (ModelState.IsValid)
             {
-                var edit = context.Project.Where(a => a.Id == projects.Id).FirstOrDefault();
-                edit.Copy(projects);//копирование
-                context.SaveChanges();
+                using (context = new DataContext())
+                {
+                    var edit = context.Project.Where(a => a.Id == projects.Id).FirstOrDefault();
+                    edit.Copy(projects);//копирование
+                    context.SaveChanges();
+                }
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+            return View("Error");
         }
 
         [HttpPost]
         public ActionResult EditProjects_Employees(Projects_Employees p_e)//изменение Projects_Employees
         {
-            using (context = new DataContext())
+            if (ModelState.IsValid)
             {
-                var edit = context.Project_Employee.Where(a => a.Id == p_e.Id).FirstOrDefault();
-                edit.Copy(p_e);//копирование
-                context.SaveChanges();
+                using (context = new DataContext())
+                {
+                    var edit = context.Project_Employee.Where(a => a.Id == p_e.Id).FirstOrDefault();
+                    edit.Copy(p_e);//копирование
+                    context.SaveChanges();
+                }
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+            return View("Error");
         }
 
         [HttpPost]
         public ActionResult EditTask(Task task)//изменение Task
         {
-            using (context = new DataContext())
+            if (ModelState.IsValid)
             {
-                var edit = context.Tasks.Where(a => a.Id == task.Id).FirstOrDefault();
-                edit.Copy(task);//копирование
-                context.SaveChanges();
+                using (context = new DataContext())
+                {
+                    var edit = context.Tasks.Where(a => a.Id == task.Id).FirstOrDefault();
+                    edit.Copy(task);//копирование
+                    context.SaveChanges();
+                }
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Select");
+            return View("Error");
         }
 
 
@@ -111,42 +129,58 @@ namespace Project.Controllers
         [HttpPost]
         public ActionResult AddEmployees(Employees employees)//добавление сотрудника
         {
-            using (context = new DataContext())
+            if (ModelState.IsValid)
             {
-                context.Employee.Add(employees);
-                context.SaveChanges();
+                using (context = new DataContext())
+                {
+                    context.Employee.Add(employees);
+                    context.SaveChanges();
+                }
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+            return View("Error");
         }
         [HttpPost]
         public ActionResult AddProjects(Projects projects)//добавление проекта
         {
-            using (context = new DataContext())
+            if (ModelState.IsValid)
             {
-                context.Project.Add(projects);
-                context.SaveChanges();
+                using (context = new DataContext())
+                {
+                    context.Project.Add(projects);
+                    context.SaveChanges();
+                }
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+            return View("Error");
         }
         [HttpPost]
         public ActionResult AddProjects_Employees(Projects_Employees p_e)//добавление сотрудников на проект
         {
-            using (context = new DataContext())
+            if (ModelState.IsValid)
             {
-                context.Project_Employee.Add(p_e);
-                context.SaveChanges();
+                using (context = new DataContext())
+                {
+                    context.Project_Employee.Add(p_e);
+                    context.SaveChanges();
+                }
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+            return View("Error");
         }
         [HttpPost]
         public ActionResult AddTask(Task task)//добавление задачи
         {
-            using (context = new DataContext())
+            if (ModelState.IsValid)
             {
-                context.Tasks.Add(task);
-                context.SaveChanges();
+                using (context = new DataContext())
+                {
+                    context.Tasks.Add(task);
+                    context.SaveChanges();
+                }
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+            return View("Error");
         }
     }
 }

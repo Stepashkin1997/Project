@@ -146,6 +146,18 @@
     <Compile Include="Migrations\201906011741153_Add_Task-v2.Designer.cs">
       <DependentUpon>201906011741153_Add_Task-v2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906040853457_changeTask.cs" />
+    <Compile Include="Migrations\201906040853457_changeTask.Designer.cs">
+      <DependentUpon>201906040853457_changeTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906040908103_changeTask-v2.cs" />
+    <Compile Include="Migrations\201906040908103_changeTask-v2.Designer.cs">
+      <DependentUpon>201906040908103_changeTask-v2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906040940264_changeTabels.cs" />
+    <Compile Include="Migrations\201906040940264_changeTabels.Designer.cs">
+      <DependentUpon>201906040940264_changeTabels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\Employees.cs" />
@@ -200,7 +212,6 @@
     <Content Include="Views\Output\Projects.cshtml" />
     <Content Include="Views\Output\EmployeesinProjects.cshtml" />
     <Content Include="Views\Output\Tasks.cshtml" />
-    <Content Include="Views\Update\Change.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -219,6 +230,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906011741153_Add_Task-v2.resx">
       <DependentUpon>201906011741153_Add_Task-v2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906040853457_changeTask.resx">
+      <DependentUpon>201906040853457_changeTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906040908103_changeTask-v2.resx">
+      <DependentUpon>201906040908103_changeTask-v2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906040940264_changeTabels.resx">
+      <DependentUpon>201906040940264_changeTabels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

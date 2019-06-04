@@ -136,8 +136,8 @@ function onAjaxSuccess(data) {
         $("#ActionForm").append("<h3>" + key + "</h3>");
         $("#ActionForm").append("<input type='text' name='" + key + "'>");
     }
-    $('#ChangeForm').append("<input type='hidden' name='Id' id='hidden' value=''>");
-    $("#ChangeForm").append("<input type='submit' id='action'>");
+    $('#ChangeForm').append("<input type='hidden' name='Id' id='hidden' value='0'>");
+    $("#ChangeForm").append("<input type='submit' id='action' class='select' value='Send'>");
     $("#title").append("<th>delete</th>");
 
     $('#action').bind('click', function () {
@@ -171,10 +171,11 @@ function onAjaxSuccess(data) {
 
     //вызов модального окна для добаления
     btn.on('click', function () {
+        $('#hidden').attr('value', '0');
         modal.fadeIn();
-        $("#hidden").attr('value', '');
         $("#ChangeForm").attr('action', "/Update/Add" + $("select option:selected").html() + "/");
         $("#ActionHead").html("Add");
+        $('#hidden').attr('value', '0');
     });
 
     //закрытие модального окна
