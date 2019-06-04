@@ -27,6 +27,7 @@
             Table selection
         </h1>
         <select name="update" id="update">
+            <option value="None"></option>
             @{
                 foreach (var item in ViewBag.List)
                 {
@@ -34,7 +35,6 @@
                 }
             }
         </select>
-        <button id="ok">Select</button>
     </div>
     <div>
         <table id="table"></table>

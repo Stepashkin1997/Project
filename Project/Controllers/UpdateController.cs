@@ -47,7 +47,7 @@ namespace Project.Controllers
         [HttpPost]
         public ActionResult EditEmployees(Employees employees)//изменение Employees
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid)//validation check
             {
                 using (context = new DataContext())
                 {
@@ -63,7 +63,7 @@ namespace Project.Controllers
         [HttpPost]
         public ActionResult EditProjects(Projects projects)//изменение Projects
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid)//validation check
             {
                 using (context = new DataContext())
                 {
@@ -79,7 +79,7 @@ namespace Project.Controllers
         [HttpPost]
         public ActionResult EditProjects_Employees(Projects_Employees p_e)//изменение Projects_Employees
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid)//validation check
             {
                 using (context = new DataContext())
                 {
@@ -95,7 +95,7 @@ namespace Project.Controllers
         [HttpPost]
         public ActionResult EditTask(Task task)//изменение Task
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid)//validation check
             {
                 using (context = new DataContext())
                 {
@@ -127,7 +127,7 @@ namespace Project.Controllers
         [HttpPost]
         public ActionResult AddEmployees(Employees employees)//добавление сотрудника
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid)//validation check
             {
                 using (context = new DataContext())
                 {
@@ -141,7 +141,7 @@ namespace Project.Controllers
         [HttpPost]
         public ActionResult AddProjects(Projects projects)//добавление проекта
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid)//validation check
             {
                 using (context = new DataContext())
                 {
@@ -155,7 +155,7 @@ namespace Project.Controllers
         [HttpPost]
         public ActionResult AddProjects_Employees(Projects_Employees p_e)//добавление сотрудников на проект
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid)//validation check
             {
                 using (context = new DataContext())
                 {
@@ -169,7 +169,7 @@ namespace Project.Controllers
         [HttpPost]
         public ActionResult AddTask(Task task)//добавление задачи
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid)//validation check
             {
                 using (context = new DataContext())
                 {

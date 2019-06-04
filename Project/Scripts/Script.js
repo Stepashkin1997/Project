@@ -4,9 +4,12 @@ var types = [];
 //начальный метод скрипта
 $(document).ready(function () {
 
-    //ajax запрос таблиц
-    $('#ok').bind('click', function () {
+    //Генерация событие по изменению выпадающего списка
+    $('#update').change(function () {
+        
         var a = $("select#update").val();
+
+        //ajax запрос таблиц
         $.ajax({
             url: "/Update/Select/",
             type: "POST",
