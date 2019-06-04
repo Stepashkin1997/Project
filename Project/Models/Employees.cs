@@ -25,12 +25,10 @@ namespace Project.Models
 
         public ICollection<Task> Task { get; set; }
 
-        public ICollection<Projects_Employees> Projects_Employees { get; set; }
 
         public Employees()//ленивая загрузка
         {
             Task = new HashSet<Task>();
-            Projects_Employees = new HashSet<Projects_Employees>();
         }
 
         public void Copy(Employees employees)//конструктор копирования

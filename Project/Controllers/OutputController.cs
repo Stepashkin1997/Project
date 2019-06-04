@@ -122,7 +122,7 @@ namespace Project.Controllers
                 {
                     return View("Error");//если запрашиваемый проект не существует вернуть ошибку
                 }
-                var result = context.Project_Employee.Where(r => r.ProjectId == id).Join(context.Employee, a => a.EmployeeId, b => b.Id, (p, c) =>
+                var result = context.EmpinPrjs.Where(r => r.ProjectId == id).Join(context.Employee, a => a.EmployeeId, b => b.Id, (p, c) =>
 
                     c.Name + " " + c.Surname + " " + c.Middle_name
                 );// соединение таблиц Project_Employee и Employee и выборка полного имени

@@ -162,9 +162,9 @@
     <Compile Include="Migrations\201906041109576_delete_column_info.Designer.cs">
       <DependentUpon>201906041109576_delete_column_info.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906041510355_New_Links.cs" />
-    <Compile Include="Migrations\201906041510355_New_Links.Designer.cs">
-      <DependentUpon>201906041510355_New_Links.cs</DependentUpon>
+    <Compile Include="Migrations\201906041520130_New_links.cs" />
+    <Compile Include="Migrations\201906041520130_New_links.Designer.cs">
+      <DependentUpon>201906041520130_New_links.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Annotations\MyStatusAttribute.cs" />
@@ -173,7 +173,7 @@
     <Compile Include="Models\Filters\ProjectFilter.cs" />
     <Compile Include="Models\Filters\TaskFilter.cs" />
     <Compile Include="Models\Projects.cs" />
-    <Compile Include="Models\Projects_Employees.cs" />
+    <Compile Include="Models\EmpinPrj.cs" />
     <Compile Include="Models\Task.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Projects_EmployeesView.cs" />
@@ -251,8 +251,8 @@
     <EmbeddedResource Include="Migrations\201906041109576_delete_column_info.resx">
       <DependentUpon>201906041109576_delete_column_info.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906041510355_New_Links.resx">
-      <DependentUpon>201906041510355_New_Links.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906041520130_New_links.resx">
+      <DependentUpon>201906041520130_New_links.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

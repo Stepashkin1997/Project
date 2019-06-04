@@ -7,12 +7,6 @@ namespace Project.Models
 {
     public class Projects//cущность проект
     {
-        public Projects()//ленивая загрузка
-        {
-            PE = new HashSet<Projects_Employees>();
-            
-        }
-
         public int Id { get; set; }//столбец индификации
 
         [Required]
@@ -37,7 +31,6 @@ namespace Project.Models
         [Required]
         public int Priority { get; set; }//приоритет проекта
 
-        public ICollection<Projects_Employees> PE { get; set; }
         public void Copy(Projects projects)//контструкор копирования
         {
             Name = projects.Name;

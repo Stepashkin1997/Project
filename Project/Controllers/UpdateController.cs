@@ -27,7 +27,7 @@ namespace Project.Controllers
                         var otdel = context.Project.ToList().Select(a => new { a.Id, a.Name, a.Customer, a.Executor, a.Manager, Date_start = a.Date_start.ToShortDateString(), Date_end = a.Date_end.ToShortDateString(), a.Priority }).OrderBy(a => a.Id);
                         return Json(otdel);
                     case "Projects_Employees":
-                        var product = context.Project_Employee.ToList();
+                        var product = context.EmpinPrjs.ToList();
                         return Json(product);
                     case "Employees":
                         var employee = context.Employee.ToList().Select(a => new { a.Id, a.Name, a.Surname, a.Middle_name, a.email }).OrderBy(a => a.Id);
@@ -77,13 +77,13 @@ namespace Project.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditProjects_Employees(Projects_Employees p_e)//изменение Projects_Employees
+        public ActionResult EditProjects_Employees(EmpinPrj p_e)//изменение Projects_Employees
         {
             if (ModelState.IsValid)//validation check
             {
                 using (context = new DataContext())
                 {
-                    var edit = context.Project_Employee.Where(a => a.Id == p_e.Id).FirstOrDefault();
+                    var edit = context.EmpinPrjs.Where(a => a.Id == p_e.Id).FirstOrDefault();
                     edit.Copy(p_e);//копирование
                     context.SaveChanges();
                 }
@@ -154,13 +154,13 @@ namespace Project.Controllers
             return View("Error");
         }
         [HttpPost]
-        public ActionResult AddProjects_Employees(Projects_Employees p_e)//добавление сотрудников на проект
+        public ActionResult AddProjects_Employees(EmpinPrj p_e)//добавление сотрудников на проект
         {
             if (ModelState.IsValid)//validation check
             {
                 using (context = new DataContext())
                 {
-                    context.Project_Employee.Add(p_e);
+                    context.EmpinPrjs.Add(p_e);
                     context.SaveChanges();
                 }
                 return RedirectToAction("Index");
