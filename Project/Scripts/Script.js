@@ -74,6 +74,8 @@ $(document).ready(function () {
         return 0;
     }
 
+
+
     //оброботчик события клика на Th, сортировка таблицы по столбцу
     $('#table').on("click", "th", function () {
         if ($(this).children("img").attr('class') == "delete" || $(this).html() =="delete")
@@ -122,6 +124,7 @@ function onAjaxSuccess(data) {
     $("#add").empty();
     $("#table").empty();
     $("#ActionForm").empty();
+    $("#SendActionForm").empty();
 
     //parse
     data = jQuery.parseJSON(data);
@@ -139,8 +142,8 @@ function onAjaxSuccess(data) {
         $("#ActionForm").append("<h3>" + key + "</h3>");
         $("#ActionForm").append("<input type='text' name='" + key + "'>");
     }
-    $('#ChangeForm').append("<input type='hidden' name='Id' id='hidden' value='0'>");
-    $("#ChangeForm").append("<input type='submit' id='action' class='select' value='Send'>");
+    $('#SendActionForm').append("<input type='hidden' name='Id' id='hidden' value='0'>");
+    $("#SendActionForm").append("<input type='submit' id='action' class='select' value='Send'>");
     $("#title").append("<th>delete</th>");
 
     $('#action').bind('click', function () {

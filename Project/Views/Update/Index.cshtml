@@ -4,8 +4,7 @@
 }
 @section Scripts
 {
-    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-    <script src="~/Scripts/Script.js"></script>
+    @Scripts.Render("~/bundles/jquery")
 }
 
 
@@ -16,6 +15,7 @@
             <h2 id="ActionHead">Add</h2>
             <form id="ChangeForm" method="post">
                 <div id="ActionForm"></div>
+                <div id="SendActionForm"></div>
             </form>
         </div>
     </div>
