@@ -115,6 +115,45 @@ $(document).ready(function () {
     });
 
 
+
+    //оброботчик события клика на Th, сортировка таблицы по столбцу
+    $('#tablenoedit').on("click", "th", function () {
+        if ($(this).html() == "Show information about employees")
+            return;
+        //отчиска класса предыдущего сортируемого
+        $('.srt').removeAttr('class');
+
+        //сортируемый столбец
+        var search = $(this).html();
+        $(this).attr('class', 'srt');
+
+        var col = [];
+
+        //формирование массива - id,count
+        $('#tablenoedit').find('tr:not(#title)').each(function () {
+            var id = $(this).attr('id');
+            var count = $(this).find("td#" + search).html();
+            col.push({ id: id, count: count });
+        });
+
+        //сортировка
+        col.sort(compare);
+        if ($(this).attr('id') == 'srt') {
+            col.reverse();
+            $(this).removeAttr('id');
+        }
+        else {
+            $(this).attr('id', 'srt');
+        }
+
+        //формирование нового порядка в таблице
+        for (var i = 0; i < col.length; i++) {
+            var id = col[i].id;
+            $("#" + id).appendTo($("#tablenoedit"));
+        }
+    });
+
+
 });
 
 
@@ -125,9 +164,13 @@ function onAjaxSuccess(data) {
     $("#table").empty();
     $("#ActionForm").empty();
     $("#SendActionForm").empty();
-
+    
     //parse
     data = jQuery.parseJSON(data);
+
+    if (data == "none") {
+        return;
+    }
 
     $("#table").append("<caption><h1>" + $("select option:selected").html() + "</h1></caption>");
 

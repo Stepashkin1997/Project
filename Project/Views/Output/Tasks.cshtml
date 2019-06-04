@@ -6,11 +6,11 @@
 
 <div style="text-align:center; line-height: 20px;">
     <div style="display:inline-block; vertical-align:text-top;">
-        <table>
+        <table id="tablenoedit">
             <caption>
                 <h2>Tasks</h2>
             </caption>
-            <tr>
+            <tr id="title">
                 <th>№</th>
                 <th>Name</th>
                 <th>Author</th>
@@ -23,15 +23,15 @@
             @{
                 foreach (var item in ViewBag.Task)
                 {
-                    <tr>
-                        <td>@item.Id</td>
-                        <td>@item.Name</td>
-                        <td>@item.Author.Name</td>
-                        <td>@item.Executor.Name</td>
-                        <td>@item.Status</td>
-                        <td>@item.Comment</td>
-                        <td>@item.Priority</td>
-                        <td>@item.Project</td>
+                    <tr id="@item.Id">
+                        <td id="№">@item.Id</td>
+                        <td id="Name">@item.Name</td>
+                        <td id="Author">@item.Author.Name</td>
+                        <td id="Executor">@item.Executor.Name</td>
+                        <td id="Status">@item.Status</td>
+                        <td id="Comment">@item.Comment</td>
+                        <td id="Priority">@item.Priority</td>
+                        <td id="Project">@item.Project</td>
                     </tr>
                 }
             }

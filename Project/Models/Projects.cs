@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
@@ -6,6 +7,12 @@ namespace Project.Models
 {
     public class Projects//cущность проект
     {
+        public Projects()//ленивая загрузка
+        {
+            PE = new HashSet<Projects_Employees>();
+            
+        }
+
         public int Id { get; set; }//столбец индификации
 
         [Required]
@@ -29,6 +36,8 @@ namespace Project.Models
         [Range(1, 10)]
         [Required]
         public int Priority { get; set; }//приоритет проекта
+
+        public ICollection<Projects_Employees> PE { get; set; }
         public void Copy(Projects projects)//контструкор копирования
         {
             Name = projects.Name;

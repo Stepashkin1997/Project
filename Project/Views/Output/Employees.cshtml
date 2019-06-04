@@ -4,11 +4,11 @@
 }
 <div style="text-align:center; line-height: 20px;">
     <div style="display:inline-block; vertical-align:text-top;">
-        <table>
+        <table id="tablenoedit">
             <caption>
                 <h2>Employees</h2>
             </caption>
-            <tr>
+            <tr id="title">
                 <th>№</th>
                 <th>Name</th>
                 <th>Surname</th>
@@ -18,12 +18,12 @@
             @{
                 foreach (var item in ViewBag.Employees)
                 {
-                    <tr>
-                        <td>@item.Id</td>
-                        <td>@item.Name</td>
-                        <td>@item.Surname</td>
-                        <td>@item.Middle_name</td>
-                        <td>@item.email</td>
+                    <tr id="@item.Id">
+                        <td id="№">@item.Id</td>
+                        <td id="Name">@item.Name</td>
+                        <td id="Surname">@item.Surname</td>
+                        <td id="Middle name">@item.Middle_name</td>
+                        <td id="e-mail">@item.email</td>
                     </tr>
                 }
             }

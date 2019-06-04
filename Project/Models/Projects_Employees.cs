@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Project.Models
 {
@@ -8,17 +9,20 @@ namespace Project.Models
 
 
         [Required]
-        public int Employee { get; set; }
+        public int EmployeeId { get; set; }
+
+        public virtual Employees Employee { get; set; }
 
 
         [Required]
-        public int Project { get; set; }
+        public int ProjectId { get; set; }
 
+        public virtual Projects Project { get; set; }
 
         public void Copy(Projects_Employees p_e)//контструкор копирования
         {
-            Employee = p_e.Employee;
-            Project = p_e.Project;
+            EmployeeId = p_e.EmployeeId;
+            ProjectId = p_e.ProjectId;
         }
     }
 }

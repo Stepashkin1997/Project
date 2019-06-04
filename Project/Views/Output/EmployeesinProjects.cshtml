@@ -9,14 +9,14 @@
             <caption>
                 <h2>Employees in project "@ViewBag.Project"</h2>
             </caption>
-            <tr>
+            <tr id="title">
                 <th>Employee</th>
             </tr>
             @{
                 foreach (var item in ViewBag.Result)
                 {
                     <tr>
-                        <td>@item</td>
+                        <td id="Employee">@item</td>
                     </tr>
                 }
             }

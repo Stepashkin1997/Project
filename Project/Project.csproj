@@ -162,6 +162,10 @@
     <Compile Include="Migrations\201906041109576_delete_column_info.Designer.cs">
       <DependentUpon>201906041109576_delete_column_info.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906041510355_New_Links.cs" />
+    <Compile Include="Migrations\201906041510355_New_Links.Designer.cs">
+      <DependentUpon>201906041510355_New_Links.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Annotations\MyStatusAttribute.cs" />
     <Compile Include="Models\DataContext.cs" />
@@ -246,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906041109576_delete_column_info.resx">
       <DependentUpon>201906041109576_delete_column_info.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906041510355_New_Links.resx">
+      <DependentUpon>201906041510355_New_Links.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

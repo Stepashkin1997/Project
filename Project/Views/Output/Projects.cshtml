@@ -4,11 +4,11 @@
 }
 <div style="text-align:center; line-height: 20px;">
     <div style="display:inline-block; vertical-align:text-top;">
-        <table>
+        <table id="tablenoedit">
             <caption>
                 <h2>Projects</h2>
             </caption>
-            <tr>
+            <tr id="title">
                 <th>№</th>
                 <th>Name</th>
                 <th>Customer</th>
@@ -22,15 +22,15 @@
             @{
                 foreach (var item in ViewBag.Projects)
                 {
-                    <tr>
-                        <td>@item.Id</td>
-                        <td>@item.Name</td>
-                        <td>@item.Customer</td>
-                        <td>@item.Executor</td>
-                        <td>@item.Manager</td>
-                        <td>@item.Date_start</td>
-                        <td>@item.Date_end</td>
-                        <td>@item.Priority</td>
+                    <tr id="@item.Id">
+                        <td id="№">@item.Id</td>
+                        <td id="Name">@item.Name</td>
+                        <td id="Customer">@item.Customer</td>
+                        <td id="Executor">@item.Executor</td>
+                        <td id="Manager">@item.Manager</td>
+                        <td id="Date start">@item.Date_start</td>
+                        <td id="Date end">@item.Date_end</td>
+                        <td id="Priority">@item.Priority</td>
                         <td>
                             <a href="/Output/EmployeesinProjects/@item.Id">
                                 <button class="select">Show</button>

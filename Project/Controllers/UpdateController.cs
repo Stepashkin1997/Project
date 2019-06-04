@@ -36,7 +36,7 @@ namespace Project.Controllers
                         var task = context.Tasks.ToList().Select(a => new { a.Id, a.Name, a.Status, a.Comment, a.Priority, a.AuthorId, a.ExecutorId, a.Project }).OrderBy(a => a.Id);
                         return Json(task);
                     default:
-                        return null;
+                        return Json("none");
                 }
             }
         }
@@ -101,6 +101,7 @@ namespace Project.Controllers
                 {
                     var edit = context.Tasks.Where(a => a.Id == task.Id).FirstOrDefault();
                     edit.Copy(task);//копирование
+                    
                     context.SaveChanges();
                 }
                 return RedirectToAction("Index");
@@ -174,6 +175,7 @@ namespace Project.Controllers
                 using (context = new DataContext())
                 {
                     context.Tasks.Add(task);
+   
                     context.SaveChanges();
                 }
                 return RedirectToAction("Index");
