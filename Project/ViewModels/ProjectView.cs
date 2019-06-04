@@ -9,7 +9,6 @@
         public string Manager { get; set; }//руководитель проекта
         public string Date_start { get; set; }//дата начала проекта
         public string Date_end { get; set; }//дата окончания проекта
-        public string Info_Executor { get; set; }//данные об исполнителях проекта
         public int Priority { get; set; }//приоритет проекта
     }
 }

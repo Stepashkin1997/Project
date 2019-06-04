@@ -1,15 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Project.Models.Annotations;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Project.Models
 {
-
-    public enum Status //перечисление для статуса задачи
-    {
-        ToDo,
-        InProgress,
-        Done,
-    }
     public class Task
     {
         public void Copy(Task task)//контструкор копирования
@@ -27,15 +21,10 @@ namespace Project.Models
         [Required]
         public string Name { get; set; }//название задачи,
         [Required]
+        [MyStatus(new string[] { "ToDo", "InProgress", "Done" })]
         [Column("Status")]
-        public string Status
-        {
-            get { return StatusEnum.ToString(); }
-            set { StatusEnum = value.ParseEnum<Status>(); }
-        }
+        public string Status { get; set; }//статус
 
-        [NotMapped]
-        public Status StatusEnum { get; set; }
         [Required]
         public string Comment { get; set; }//комментарий
         [Required]

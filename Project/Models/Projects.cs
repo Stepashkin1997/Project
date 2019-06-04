@@ -20,8 +20,6 @@ namespace Project.Models
         [Required]
         public DateTime Date_end { get; set; }//дата окончания проекта
         [Required]
-        public string Info_Executor { get; set; }//данные об исполнителях проекта
-        [Required]
         public int Priority { get; set; }//приоритет проекта
         public void Copy(Projects projects)//контструкор копирования
         {
@@ -31,7 +29,6 @@ namespace Project.Models
             Manager = projects.Manager;
             Date_start = projects.Date_start;
             Date_end = projects.Date_end;
-            Info_Executor = projects.Info_Executor;
             Priority = projects.Priority;
         }
     }

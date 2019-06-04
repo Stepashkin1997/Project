@@ -95,7 +95,6 @@ namespace Project.Controllers
                     Manager = c.Name + " " + c.Surname + " " + c.Middle_name,//Конкатинация Имени Фамилии и Отчества
                     Date_start = p.Date_start.ToShortDateString(),
                     Date_end = p.Date_end.ToShortDateString(),
-                    Info_Executor = p.Info_Executor,
                     Priority = p.Priority
                 });
 
@@ -149,7 +148,6 @@ namespace Project.Controllers
                     Manager = c.Name + " " + c.Surname + " " + c.Middle_name,
                     Date_start = p.Date_start.ToShortDateString(),
                     Date_end = p.Date_end.ToShortDateString(),
-                    Info_Executor = p.Info_Executor,
                     Priority = p.Priority
                 });
 

@@ -24,7 +24,7 @@ namespace Project.Controllers
                 switch (table)//выбор таблицы по запросу
                 {
                     case "Projects":
-                        var otdel = context.Project.ToList().Select(a => new { a.Id, a.Name, a.Customer, a.Executor, a.Manager, Date_start = a.Date_start.ToShortDateString(), Date_end = a.Date_end.ToShortDateString(), a.Info_Executor, a.Priority }).OrderBy(a => a.Id);
+                        var otdel = context.Project.ToList().Select(a => new { a.Id, a.Name, a.Customer, a.Executor, a.Manager, Date_start = a.Date_start.ToShortDateString(), Date_end = a.Date_end.ToShortDateString(), a.Priority }).OrderBy(a => a.Id);
                         return Json(otdel);
                     case "Projects_Employees":
                         var product = context.Project_Employee.ToList();
@@ -49,8 +49,6 @@ namespace Project.Controllers
         {
             if (ModelState.IsValid)
             {
-
-
                 using (context = new DataContext())
                 {
                     var edit = context.Employee.Where(a => a.Id == employees.Id).FirstOrDefault();

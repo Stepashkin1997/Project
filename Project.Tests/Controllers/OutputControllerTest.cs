@@ -67,5 +67,15 @@ namespace Project.Tests.Controllers
 
             Assert.IsNotNull(result);
         }
+
+        [TestMethod]
+        public void TaskViewResultNotNull()//проверка результата метода EmployeesinProjects на пустоту
+        {
+            OutputController controller = new OutputController();
+
+            ViewResult result = controller.Tasks() as ViewResult;
+
+            Assert.IsNotNull(result);
+        }
     }
 }
