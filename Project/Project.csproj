@@ -166,6 +166,26 @@
     <Compile Include="Migrations\201906041520130_New_links.Designer.cs">
       <DependentUpon>201906041520130_New_links.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906041537288_edit_table.cs" />
+    <Compile Include="Migrations\201906041537288_edit_table.Designer.cs">
+      <DependentUpon>201906041537288_edit_table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906041541040_addrefers.cs" />
+    <Compile Include="Migrations\201906041541040_addrefers.Designer.cs">
+      <DependentUpon>201906041541040_addrefers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906041604570_addrefers-v2.cs" />
+    <Compile Include="Migrations\201906041604570_addrefers-v2.Designer.cs">
+      <DependentUpon>201906041604570_addrefers-v2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906041612023_addrefers-v3.cs" />
+    <Compile Include="Migrations\201906041612023_addrefers-v3.Designer.cs">
+      <DependentUpon>201906041612023_addrefers-v3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906041615007_addrefers-v4.cs" />
+    <Compile Include="Migrations\201906041615007_addrefers-v4.Designer.cs">
+      <DependentUpon>201906041615007_addrefers-v4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Annotations\MyStatusAttribute.cs" />
     <Compile Include="Models\DataContext.cs" />
@@ -253,6 +273,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906041520130_New_links.resx">
       <DependentUpon>201906041520130_New_links.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906041537288_edit_table.resx">
+      <DependentUpon>201906041537288_edit_table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906041541040_addrefers.resx">
+      <DependentUpon>201906041541040_addrefers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906041604570_addrefers-v2.resx">
+      <DependentUpon>201906041604570_addrefers-v2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906041612023_addrefers-v3.resx">
+      <DependentUpon>201906041612023_addrefers-v3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906041615007_addrefers-v4.resx">
+      <DependentUpon>201906041615007_addrefers-v4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

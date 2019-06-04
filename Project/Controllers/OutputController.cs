@@ -86,7 +86,7 @@ namespace Project.Controllers
         {
             using (context = new DataContext())
             {
-                var result = context.Project.ToList().Join(context.Employee, a => a.Manager, b => b.Id, (p, c) => new ProjectView// соединение таблиц Project и Employee и выборка для представления
+                var result = context.Project.ToList().Join(context.Employee, a => a.ManagerId, b => b.Id, (p, c) => new ProjectView// соединение таблиц Project и Employee и выборка для представления
                 {
                     Id = p.Id,
                     Name = p.Name,
@@ -139,7 +139,7 @@ namespace Project.Controllers
         {
             using (context = new DataContext())
             {
-                var result = context.Project.ToList().Join(context.Employee, a => a.Manager, b => b.Id, (p, c) => new ProjectView// соединение таблиц Project и Employee и выборка для представления
+                var result = context.Project.ToList().Join(context.Employee, a => a.ManagerId, b => b.Id, (p, c) => new ProjectView// соединение таблиц Project и Employee и выборка для представления
                 {
                     Id = p.Id,
                     Name = p.Name,

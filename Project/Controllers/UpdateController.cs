@@ -1,4 +1,5 @@
 ﻿using Project.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -12,7 +13,7 @@ namespace Project.Controllers
         public ActionResult Index()
         {
 
-            ViewBag.List = new List<string>() { "Employees", "Projects", "Projects_Employees", "Task" };//список имен таблиц
+            ViewBag.List = new List<string>() { "Employees", "Projects", "EmpinPrj", "Task" };//список имен таблиц
             return View();
         }
 
@@ -24,10 +25,10 @@ namespace Project.Controllers
                 switch (table)//выбор таблицы по запросу
                 {
                     case "Projects":
-                        var otdel = context.Project.ToList().Select(a => new { a.Id, a.Name, a.Customer, a.Executor, a.Manager, Date_start = a.Date_start.ToShortDateString(), Date_end = a.Date_end.ToShortDateString(), a.Priority }).OrderBy(a => a.Id);
+                        var otdel = context.Project.ToList().Select(a => new { a.Id, a.Name, a.Customer, a.Executor, a.ManagerId, Date_start = a.Date_start.ToShortDateString(), Date_end = a.Date_end.ToShortDateString(), a.Priority }).OrderBy(a => a.Id);
                         return Json(otdel);
-                    case "Projects_Employees":
-                        var product = context.EmpinPrjs.ToList();
+                    case "EmpinPrj":
+                        var product = context.EmpinPrjs.ToList().Select(a => new { a.Id, a.EmployeeId, a.ProjectId }).OrderBy(a => a.Id);
                         return Json(product);
                     case "Employees":
                         var employee = context.Employee.ToList().Select(a => new { a.Id, a.Name, a.Surname, a.Middle_name, a.email }).OrderBy(a => a.Id);
@@ -77,7 +78,7 @@ namespace Project.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditProjects_Employees(EmpinPrj p_e)//изменение Projects_Employees
+        public ActionResult EditEmpinPrj(EmpinPrj p_e)//изменение Projects_Employees
         {
             if (ModelState.IsValid)//validation check
             {
@@ -154,14 +155,21 @@ namespace Project.Controllers
             return View("Error");
         }
         [HttpPost]
-        public ActionResult AddProjects_Employees(EmpinPrj p_e)//добавление сотрудников на проект
+        public ActionResult AddEmpinPrj(EmpinPrj p_e)//добавление сотрудников на проект
         {
             if (ModelState.IsValid)//validation check
             {
                 using (context = new DataContext())
                 {
-                    context.EmpinPrjs.Add(p_e);
-                    context.SaveChanges();
+                    try
+                    {
+                        context.EmpinPrjs.Add(p_e);
+                        context.SaveChanges();
+                    }
+                    catch (Exception)
+                    {
+                        return View("Error");
+                    }
                 }
                 return RedirectToAction("Index");
             }
@@ -174,9 +182,15 @@ namespace Project.Controllers
             {
                 using (context = new DataContext())
                 {
-                    context.Tasks.Add(task);
-   
-                    context.SaveChanges();
+                    try
+                    {
+                        context.Tasks.Add(task);
+                        context.SaveChanges();
+                    }
+                    catch (Exception)
+                    {
+                        return View("Error");
+                    }
                 }
                 return RedirectToAction("Index");
             }

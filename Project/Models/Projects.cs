@@ -7,6 +7,21 @@ namespace Project.Models
 {
     public class Projects//cущность проект
     {
+        public Projects()//ленивая загрузка
+        {
+            EmpinPrj = new HashSet<EmpinPrj>();
+        }
+
+        public void Copy(Projects projects)//контструкор копирования
+        {
+            Name = projects.Name;
+            Customer = projects.Customer;
+            Executor = projects.Executor;
+            ManagerId = projects.ManagerId;
+            Date_start = projects.Date_start;
+            Date_end = projects.Date_end;
+            Priority = projects.Priority;
+        }
         public int Id { get; set; }//столбец индификации
 
         [Required]
@@ -19,7 +34,8 @@ namespace Project.Models
         public string Executor { get; set; }//название компании-исполнителя
 
         [Required]
-        public int Manager { get; set; }//руководитель проекта
+        public int? ManagerId { get; set; }//руководитель проекта
+        public virtual Employees Manager { get; set; }
 
         [Required]
         public DateTime Date_start { get; set; }//дата начала проекта
@@ -31,15 +47,8 @@ namespace Project.Models
         [Required]
         public int Priority { get; set; }//приоритет проекта
 
-        public void Copy(Projects projects)//контструкор копирования
-        {
-            Name = projects.Name;
-            Customer = projects.Customer;
-            Executor = projects.Executor;
-            Manager = projects.Manager;
-            Date_start = projects.Date_start;
-            Date_end = projects.Date_end;
-            Priority = projects.Priority;
-        }
+        public ICollection<EmpinPrj> EmpinPrj { get; set; }
+
+       
     }
 }

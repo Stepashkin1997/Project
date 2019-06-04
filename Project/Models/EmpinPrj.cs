@@ -11,10 +11,13 @@ namespace Project.Models
         [Required]
         public int EmployeeId { get; set; }
 
+        public virtual Employees Employee { get; set; }
+
 
         [Required]
         public int ProjectId { get; set; }
 
+        public virtual Projects Project { get; set; }
 
         public void Copy(EmpinPrj p_e)//контструкор копирования
         {

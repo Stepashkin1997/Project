@@ -5,6 +5,20 @@ namespace Project.Models
 {
     public class Employees//cущность работник
     {
+        public Employees()//ленивая загрузка
+        {
+            Task = new HashSet<Task>();
+            EmpinPrj = new HashSet<EmpinPrj>();
+            Project = new HashSet<Projects>();
+        }
+
+        public void Copy(Employees employees)//конструктор копирования
+        {
+            Name = employees.Name;
+            Surname = employees.Surname;
+            Middle_name = employees.Middle_name;
+            email = employees.email;
+        }
         public int Id { get; set; }
 
         [RegularExpression(@"[A-Za-z]")]
@@ -24,19 +38,8 @@ namespace Project.Models
         public string email { get; set; }//Почта
 
         public ICollection<Task> Task { get; set; }
+        public ICollection<EmpinPrj> EmpinPrj { get; set; }
+        public ICollection<Projects> Project { get; set; }
 
-
-        public Employees()//ленивая загрузка
-        {
-            Task = new HashSet<Task>();
-        }
-
-        public void Copy(Employees employees)//конструктор копирования
-        {
-            Name = employees.Name;
-            Surname = employees.Surname;
-            Middle_name = employees.Middle_name;
-            email = employees.email;
-        }
     }
 }
